@@ -4,27 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="509bf4a3-5d5b-43ae-a1aa-9ec1dda703a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CONTRIBUTION.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExplorersOdyssey.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENCE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/Window.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/menu/MenuScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/renderer/GameScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/logger/Logger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/player/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/player.png" afterDir="false" />
+    <list default="true" id="509bf4a3-5d5b-43ae-a1aa-9ec1dda703a3" name="Changes" comment="Contribution file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,16 +34,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tyler\IdeaProjects\ExplorersOdyssey\src\main" />
@@ -94,6 +75,33 @@
       <option name="presentableId" value="Default" />
       <updated>1674238951568</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initial commit&#10;&#10;BONUS: Self-written LICENCE.md based off of MIT licence.">
+      <created>1674248471121</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674248471121</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Contribution file">
+      <created>1674249356692</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1674249356692</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Contribution file">
+      <created>1674293565948</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674293565949</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit&#10;&#10;BONUS: Self-written LICENCE.md based off of MIT licence." />
+    <MESSAGE value="Contribution file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Contribution file" />
   </component>
 </project>
