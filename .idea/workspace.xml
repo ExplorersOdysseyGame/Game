@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="509bf4a3-5d5b-43ae-a1aa-9ec1dda703a3" name="Changes" comment="Contribution file">
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/spritesheet/SpritesheetClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/spritesheet/SpritesheetMemory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/spritesheet/SpritesheetReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageMemory.java" afterDir="false" />
-    </list>
+    <list default="true" id="509bf4a3-5d5b-43ae-a1aa-9ec1dda703a3" name="Changes" comment="Spritesheet reader" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,12 +111,20 @@
       <option name="project" value="LOCAL" />
       <updated>1674294475602</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Spritesheet reader">
+      <created>1674301554012</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674301554012</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit&#10;&#10;BONUS: Self-written LICENCE.md based off of MIT licence." />
     <MESSAGE value="Contribution file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Contribution file" />
+    <MESSAGE value="Spritesheet reader" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spritesheet reader" />
   </component>
 </project>
