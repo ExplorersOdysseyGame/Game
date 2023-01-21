@@ -2,6 +2,7 @@ package io.github.explorersodysseygame.game;
 
 import io.github.explorersodysseygame.game.logger.Logger;
 import io.github.explorersodysseygame.game.util.image.ImageReader;
+import io.github.explorersodysseygame.game.util.spritesheet.SpritesheetReader;
 
 public class Main {
     public static String gameName = "ExplorersOdyssey"; // Name of the game. Do not change, this is mainly for referencing the name in other classes.
@@ -32,6 +33,9 @@ public class Main {
         Logger.log("Clearing ImageMemory");
         ImageReader.ImageMemory.clear();
         Logger.log("Cleared ImageMemory");
+        Logger.log("Clearing SpritesheetMemory");
+        SpritesheetReader.SpritesheetMemory.clear();
+        Logger.log("Cleared SpritesheetMemory");
         Logger.log("Stopped ExplorersOdyssey");
     }
 }

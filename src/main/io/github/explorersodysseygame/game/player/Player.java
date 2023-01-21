@@ -2,36 +2,38 @@ package io.github.explorersodysseygame.game.player;
 
 import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import io.github.explorersodysseygame.game.util.image.ImageReader;
+import io.github.explorersodysseygame.game.util.spritesheet.SpritesheetReader;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
-import java.awt.Point;
 
+import static io.github.explorersodysseygame.game.client.renderer.GameScreen.GRID_SIZE;
 import static io.github.explorersodysseygame.game.util.image.ImageReader.ImageMemory;
+import static io.github.explorersodysseygame.game.util.spritesheet.SpritesheetReader.SpritesheetMemory;
 
 public class Player {
 
-    private BufferedImage image;
+    private Image image;
     private Point pos;
 
     public Player() {
-        ImageReader.read("player.png");
+        SpritesheetReader.read("player.png");
         loadImage();
 
         pos = new Point(0, 0);
     }
 
     private void loadImage() {
-        image = ImageMemory.findImage("player.png");
+        image = SpritesheetMemory.findSheet("player.png").getImage(1, 1).getScaledInstance(GRID_SIZE, GRID_SIZE, Image.SCALE_FAST);
     }
 
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(
                 image,
-                pos.x * GameScreen.GRID_SIZE,
-                pos.y * GameScreen.GRID_SIZE,
+                pos.x * GRID_SIZE,
+                pos.y * GRID_SIZE,
                 observer
         );
     }

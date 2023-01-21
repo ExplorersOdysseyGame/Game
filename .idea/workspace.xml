@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="509bf4a3-5d5b-43ae-a1aa-9ec1dda703a3" name="Changes" comment="Contribution file">
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/menu/MenuButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageMemory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/spritesheet/SpritesheetClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/spritesheet/SpritesheetMemory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/spritesheet/SpritesheetReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/menu/MenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/menu/MenuScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/renderer/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/client/renderer/GameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/io/github/explorersodysseygame/game/util/image/ImageMemory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +55,9 @@
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="io.github.explorersodysseygame.game.client" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="io.github.explorersodysseygame.game.util.spritesheet" />
     </key>
   </component>
   <component name="RunManager">
