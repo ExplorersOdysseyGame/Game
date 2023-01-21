@@ -6,8 +6,11 @@ import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import javax.swing.*;
 
 public class Window {
+
+    public static JFrame window;
+
     private static void initWindow() {
-        JFrame window = new JFrame(Client.gameName);
+        window = new JFrame(Client.gameName);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         MenuScreen menu = new MenuScreen();
@@ -23,11 +26,25 @@ public class Window {
         Runtime.getRuntime().addShutdownHook(new Thread(Client::stopGame, "Shutdown-thread"));
     }
 
-    public static void loadGame(JFrame window, GameScreen board, MenuScreen menu) {
+    public static JFrame getWindowAsJFrame() {
+        return window;
+    }
+
+    public static void loadGame(JFrame window, MenuScreen menu) {
+        GameScreen gameScreen = new GameScreen();
+        gameScreen.setVisible(true);
+        Client.log("Loading game");
+        Client.log("Hiding start menu");
         window.remove(menu);
-        window.add(board);
-        window.setSize(board.getWidth(), board.getHeight());
-        window.addKeyListener(board);
+        Client.log("Start menu hidden");
+        Client.log("Showing game screen");
+        window.add(gameScreen);
+        Client.log("Resizing window to fit game screen");
+        window.setSize(gameScreen.getWidth(), gameScreen.getHeight());
+        Client.log("Adding key listener to game screen");
+        window.addKeyListener(gameScreen);
+        gameScreen.repaint();
+        Client.log("Loaded game");
     }
 
     public static void main(String[] args) {

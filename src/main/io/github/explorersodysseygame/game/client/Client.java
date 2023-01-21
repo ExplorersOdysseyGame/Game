@@ -5,6 +5,8 @@ import io.github.explorersodysseygame.game.logger.Logger;
 
 public class Client extends Main {
 
+    public static final Window WINDOW = new Window();
+
     public static void main(String[] args) {
 
         // Begin game
@@ -12,6 +14,10 @@ public class Client extends Main {
         runInstance(args);
         Window.main(args);
 
+    }
+
+    public static Window getWindow() {
+        return WINDOW;
     }
 
     public static void runInstance(String[] args) {

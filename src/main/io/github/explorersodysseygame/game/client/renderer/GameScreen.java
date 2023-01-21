@@ -17,9 +17,10 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
     private final int width;
     private final int height;
     public GameScreen() {
-        width = GRID_SIZE * GRID_ROWS;
-        height = GRID_SIZE * GRID_COLUMNS;
+        width = (GRID_SIZE * GRID_ROWS + GRID_SIZE) - 4;
+        height = (GRID_SIZE * GRID_COLUMNS + (GRID_SIZE * 2)) - 1;
         setPreferredSize(new Dimension(width, height));
+        setVisible(false);
         setBackground(new Color(162, 255, 162));
         player = new Player();
         timer = new Timer(TPS, this);
