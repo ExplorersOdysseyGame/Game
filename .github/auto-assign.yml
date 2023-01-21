@@ -1,0 +1,11 @@
+# Reviewers
+addReviewers: true
+reviewers:
+  - TJ20201
+numberOfReviewers: 0
+
+# Assignees
+addAssignees: author
+assignees:
+  - TJ20201
+numberOfAssignees: 0
