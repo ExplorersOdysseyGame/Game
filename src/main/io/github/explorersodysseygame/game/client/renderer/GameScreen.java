@@ -1,5 +1,7 @@
 package io.github.explorersodysseygame.game.client.renderer;
 
+import io.github.explorersodysseygame.game.client.ClientMenuScreen;
+import io.github.explorersodysseygame.game.client.game.InGameMenu;
 import io.github.explorersodysseygame.game.player.Player;
 
 import java.awt.*;
@@ -12,19 +14,30 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
     public static final int GRID_ROWS = 24; // Amount to multiply GRID_SIZE by for width.
     public static final int GRID_COLUMNS = GRID_ROWS; // Window is always square, so this is GRID_ROWS
     private Timer timer;
-    private final Player player;
+    private Player player;
 
-    private final int width;
-    private final int height;
+    private InGameMenu inGameMenu;
+    private static GameScreen screen;
+
+    private int width;
+    private int height;
     public GameScreen() {
         width = (GRID_SIZE * GRID_ROWS + GRID_SIZE) - 4;
         height = (GRID_SIZE * GRID_COLUMNS + (GRID_SIZE * 2)) - 1;
+        inGameMenu = new InGameMenu(new Dimension(width, height));
+        add(inGameMenu);
         setPreferredSize(new Dimension(width, height));
         setVisible(false);
+        setLayout(null);
         setBackground(new Color(162, 255, 162));
         player = new Player();
         timer = new Timer(TPS, this);
         timer.start();
+        screen = this;
+    }
+
+    public static GameScreen getScreen() {
+        return screen;
     }
 
     @Override
@@ -49,8 +62,12 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // react to key down events
-        player.keyPressed(e);
+        if (!inGameMenu.isOpen()) { // Only run these events if the in-game menu is closed
+            player.keyPressed(e);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            inGameMenu.toggleVisibility();
+        }
     }
 
     @Override
@@ -80,4 +97,5 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
     public int getWidth() {
         return width;
     }
+    public void toggleInGameMenu() { inGameMenu.setVisible(false); }
 }

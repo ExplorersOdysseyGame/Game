@@ -32,7 +32,7 @@ public class ClientMenuScreen extends MenuScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));
-                ClientWindow.loadGame(Client.getWindow().getWindowAsJFrame(), ClientMenuScreen.getScreen());
+                ClientWindow.loadGame(ClientWindow.getWindowAsJFrame(), ClientMenuScreen.getScreen());
 
             }
         };

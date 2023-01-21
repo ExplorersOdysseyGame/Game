@@ -16,14 +16,18 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
     public static final int GRID_COLUMNS = GRID_ROWS; // Window is always square, so this is GRID_ROWS
     public static MenuScreen screen;
 
-    private final int width;
-    private final int height;
+    private int width;
+    private int height;
     public MenuScreen() {
-        width = GRID_SIZE * GRID_ROWS - 1;
-        height = GRID_SIZE * GRID_COLUMNS;
+        reset();
+    }
+
+    public void reset() {
+        int width = GRID_SIZE * GRID_ROWS - 1;
+        int height = GRID_SIZE * GRID_COLUMNS;
         setPreferredSize(new Dimension(width, height));
         setBackground(new Color(255, 162, 162));
-        this.setLayout(null);
+        setLayout(null);
         screen = this;
     }
 

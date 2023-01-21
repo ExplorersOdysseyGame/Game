@@ -1,7 +1,9 @@
 package io.github.explorersodysseygame.game.client;
 
 import io.github.explorersodysseygame.game.Main;
+import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import io.github.explorersodysseygame.game.common.logger.Logger;
+import io.github.explorersodysseygame.game.common.menu.MenuScreen;
 
 public class Client extends Main {
 
@@ -10,6 +12,8 @@ public class Client extends Main {
     public static void main(String[] args) {
 
         // Begin game
+        MenuScreen menuScreen = new MenuScreen();
+        GameScreen gameScreen = new GameScreen();
         Logger.log(String.format("Starting ExplorersOdyssey v%s", versionString));
         runInstance(args);
         ClientWindow.main(args);

@@ -1,13 +1,18 @@
 package io.github.explorersodysseygame.game.common.menu;
 
 import io.github.explorersodysseygame.game.Main;
+import io.github.explorersodysseygame.game.common.util.image.ImageReader;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Objects;
+
+import static io.github.explorersodysseygame.game.common.util.image.ImageReader.ImageMemory;
 
 public class MenuButton extends JButton implements ActionListener {
 
@@ -35,6 +40,18 @@ public class MenuButton extends JButton implements ActionListener {
     public MenuButton(String text, Icon icon) {
         this.setText(text);
         this.setIcon(icon);
+        this.setBackground(new Color(222, 129, 129));
+        this.addActionListener(this);
+        this.setForeground(new Color(255, 255, 255));
+        this.setBorder(BorderFactory.createEmptyBorder());
+        this.setFocusable(false);
+        final MenuButtonSelectedUI ui = new MenuButtonSelectedUI();
+        ui.setSelectColor(this.getBackground().darker());
+        this.setUI(ui);
+    }
+    public MenuButton(String text) {
+        this.setText(text);
+        this.setIcon((Icon) ImageMemory.findImage("notfound.png"));
         this.setBackground(new Color(222, 129, 129));
         this.addActionListener(this);
         this.setForeground(new Color(255, 255, 255));

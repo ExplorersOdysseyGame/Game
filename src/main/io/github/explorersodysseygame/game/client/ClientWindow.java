@@ -1,6 +1,7 @@
 package io.github.explorersodysseygame.game.client;
 
 import io.github.explorersodysseygame.game.Main;
+import io.github.explorersodysseygame.game.client.game.InGameMenu;
 import io.github.explorersodysseygame.game.common.menu.MenuScreen;
 import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import io.github.explorersodysseygame.game.common.Window;
@@ -38,20 +39,33 @@ public class ClientWindow extends Window {
     }
 
     public static void loadGame(JFrame window, MenuScreen menu) {
-        GameScreen gameScreen = new GameScreen();
+        GameScreen gameScreen = GameScreen.getScreen();
         gameScreen.setVisible(true);
         Client.log("Loading game");
         Client.log("Hiding start menu");
-        window.remove(menu);
-        Client.log("Start menu hidden");
+        menu.setVisible(false);
         Client.log("Showing game screen");
         window.add(gameScreen);
-        Client.log("Resizing window to fit game screen");
-        window.setSize(gameScreen.getWidth(), gameScreen.getHeight());
         Client.log("Adding key listener to game screen");
+        window.removeKeyListener(menu);
         window.addKeyListener(gameScreen);
         gameScreen.repaint();
         Client.log("Loaded game");
+    }
+    public static void exitGame(JFrame window, GameScreen game) {
+        MenuScreen menuScreen = ClientMenuScreen.getScreen();
+        menuScreen.setVisible(true);
+        game.toggleInGameMenu();
+        Client.log("Loading menu");
+        Client.log("Hiding game screen");
+        game.setVisible(false);
+        Client.log("Showing menu screen");
+        window.add(menuScreen);
+        Client.log("Adding key listener to menu screen");
+        window.removeKeyListener(game);
+        window.addKeyListener(menuScreen);
+        menuScreen.repaint();
+        Client.log("Loaded menu");
     }
 
     public static void main(String[] args) {
