@@ -1,8 +1,8 @@
 package io.github.explorersodysseygame.game;
 
-import io.github.explorersodysseygame.game.logger.Logger;
-import io.github.explorersodysseygame.game.util.image.ImageReader;
-import io.github.explorersodysseygame.game.util.spritesheet.SpritesheetReader;
+import io.github.explorersodysseygame.game.common.logger.Logger;
+import io.github.explorersodysseygame.game.common.util.image.ImageReader;
+import io.github.explorersodysseygame.game.common.util.spritesheet.SpritesheetReader;
 
 public class Main {
     public static String gameName = "ExplorersOdyssey"; // Name of the game. Do not change, this is mainly for referencing the name in other classes.

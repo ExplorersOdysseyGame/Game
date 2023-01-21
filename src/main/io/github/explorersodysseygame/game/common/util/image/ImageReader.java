@@ -1,11 +1,9 @@
-package io.github.explorersodysseygame.game.util.image;
+package io.github.explorersodysseygame.game.common.util.image;
 
 import io.github.explorersodysseygame.game.Main;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class ImageReader {

@@ -1,24 +1,24 @@
 package io.github.explorersodysseygame.game.player;
 
 import io.github.explorersodysseygame.game.client.renderer.GameScreen;
-import io.github.explorersodysseygame.game.util.image.ImageReader;
-import io.github.explorersodysseygame.game.util.spritesheet.SpritesheetReader;
+import io.github.explorersodysseygame.game.common.data.EntityData;
+import io.github.explorersodysseygame.game.common.util.spritesheet.SpritesheetReader;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 import static io.github.explorersodysseygame.game.client.renderer.GameScreen.GRID_SIZE;
-import static io.github.explorersodysseygame.game.util.image.ImageReader.ImageMemory;
-import static io.github.explorersodysseygame.game.util.spritesheet.SpritesheetReader.SpritesheetMemory;
+import static io.github.explorersodysseygame.game.common.util.spritesheet.SpritesheetReader.SpritesheetMemory;
 
 public class Player {
 
     private Image image;
+    private EntityData data;
     private Point pos;
 
     public Player() {
+        data = new EntityData("player");
         SpritesheetReader.read("player.png");
         loadImage();
 

@@ -1,9 +1,7 @@
-package io.github.explorersodysseygame.game.util.spritesheet;
+package io.github.explorersodysseygame.game.common.util.spritesheet;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.util.image.ImageClass;
-import io.github.explorersodysseygame.game.util.image.ImageMemory;
-import io.github.explorersodysseygame.game.util.image.ImageReader;
+import io.github.explorersodysseygame.game.common.util.image.ImageReader;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

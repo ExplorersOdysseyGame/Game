@@ -1,4 +1,4 @@
-package io.github.explorersodysseygame.game.logger;
+package io.github.explorersodysseygame.game.common.logger;
 
 import java.util.Calendar;
 

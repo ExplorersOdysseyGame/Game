@@ -1,24 +1,26 @@
 package io.github.explorersodysseygame.game.client;
 
-import io.github.explorersodysseygame.game.client.menu.MenuScreen;
+import io.github.explorersodysseygame.game.Main;
+import io.github.explorersodysseygame.game.common.menu.MenuScreen;
 import io.github.explorersodysseygame.game.client.renderer.GameScreen;
-import io.github.explorersodysseygame.game.util.image.ImageReader;
+import io.github.explorersodysseygame.game.common.Window;
+import io.github.explorersodysseygame.game.common.util.image.ImageReader;
 
 import javax.swing.*;
 
-import static io.github.explorersodysseygame.game.util.image.ImageReader.ImageMemory;
+import static io.github.explorersodysseygame.game.common.util.image.ImageReader.ImageMemory;
 
-public class Window {
+public class ClientWindow extends Window {
 
     public static JFrame window;
 
     private static void initWindow() {
-        window = new JFrame(Client.gameName);
+        window = new JFrame(Main.gameName);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ImageReader.read("icon.png");
         window.setIconImage(ImageMemory.findImage("icon.png"));
 
-        MenuScreen menu = new MenuScreen();
+        MenuScreen menu = new ClientMenuScreen();
         window.add(menu);
         window.setSize(menu.getWidth(), menu.getHeight());
         window.addKeyListener(menu);

@@ -1,23 +1,23 @@
 package io.github.explorersodysseygame.game.client;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.logger.Logger;
+import io.github.explorersodysseygame.game.common.logger.Logger;
 
 public class Client extends Main {
 
-    public static final Window WINDOW = new Window();
+    public static final ClientWindow CLIENT_WINDOW = new ClientWindow();
 
     public static void main(String[] args) {
 
         // Begin game
         Logger.log(String.format("Starting ExplorersOdyssey v%s", versionString));
         runInstance(args);
-        Window.main(args);
+        ClientWindow.main(args);
 
     }
 
-    public static Window getWindow() {
-        return WINDOW;
+    public static ClientWindow getWindow() {
+        return CLIENT_WINDOW;
     }
 
     public static void runInstance(String[] args) {

@@ -1,8 +1,5 @@
-package io.github.explorersodysseygame.game.util.spritesheet;
+package io.github.explorersodysseygame.game.common.util.spritesheet;
 
-import io.github.explorersodysseygame.game.util.image.ImageClass;
-
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class SpritesheetMemory extends ArrayList<SpritesheetClass> {

@@ -1,7 +1,6 @@
-package io.github.explorersodysseygame.game.util.spritesheet;
+package io.github.explorersodysseygame.game.common.util.spritesheet;
 
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
 public class SpritesheetClass {
     /*

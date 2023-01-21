@@ -1,4 +1,4 @@
-package io.github.explorersodysseygame.game.util.image;
+package io.github.explorersodysseygame.game.common.util.image;
 
 import java.awt.image.BufferedImage;
 
