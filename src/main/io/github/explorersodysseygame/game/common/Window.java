@@ -14,7 +14,7 @@ public class Window {
         window = new JFrame(Main.gameName);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ImageReader.read("icon.png");
-        window.setIconImage(ImageMemory.findImage("icon.png"));
+        window.setIconImage(ImageMemory.findImage("icon.png").getImage());
 
         window.setSize(256, 384);
         window.setResizable(false);

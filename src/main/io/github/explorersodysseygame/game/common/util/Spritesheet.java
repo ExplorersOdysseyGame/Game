@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Spritesheet {
+
     public static class SpritesheetClass {
         /*
          Spritesheet class for the game, made for SpritesheetMemory to be easily searchable.

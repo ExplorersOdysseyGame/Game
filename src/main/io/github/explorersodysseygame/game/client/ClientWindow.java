@@ -18,7 +18,7 @@ public class ClientWindow extends Window {
         window = new JFrame(Main.gameName);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ImageReader.read("icon.png");
-        window.setIconImage(ImageMemory.findImage("icon.png"));
+        window.setIconImage(ImageMemory.findImage("icon.png").getImage());
 
         MenuScreen menu = new ClientMenuScreen();
         window.add(menu);

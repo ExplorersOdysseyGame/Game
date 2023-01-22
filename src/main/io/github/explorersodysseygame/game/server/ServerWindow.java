@@ -17,7 +17,7 @@ public class ServerWindow extends Window {
         window = new JFrame(Main.gameName);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ImageReader.read("icon.png");
-        window.setIconImage(ImageMemory.findImage("icon.png"));
+        window.setIconImage(ImageMemory.findImage("icon.png").getImage());
 
         MenuScreen menu = new ServerMenuScreen();
         window.add(menu);
@@ -41,6 +41,6 @@ public class ServerWindow extends Window {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> initWindow());
+        SwingUtilities.invokeLater(ServerWindow::initWindow);
     }
 }

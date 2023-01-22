@@ -1,7 +1,6 @@
 package io.github.explorersodysseygame.game.server;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.server.ServerWindow;
 import io.github.explorersodysseygame.game.common.logger.Logger;
 
 public class Server extends Main {

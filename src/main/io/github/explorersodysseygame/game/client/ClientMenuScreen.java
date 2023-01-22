@@ -27,8 +27,9 @@ public class ClientMenuScreen extends MenuScreen {
         screen = this;
 
         ImageReader.read("menu/play.png");
+        ImageMemory.outputMemory();
 
-        MenuButton playButton = new MenuButton("Play", new ImageIcon(ImageMemory.findImage("menu/play.png"))) {
+        MenuButton playButton = new MenuButton("Play", new ImageIcon(ImageMemory.findImage("menu/play.png").getImage())) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));

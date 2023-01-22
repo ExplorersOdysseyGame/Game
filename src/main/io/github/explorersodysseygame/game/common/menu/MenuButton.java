@@ -36,7 +36,12 @@ public class MenuButton extends JButton implements ActionListener {
     }
     public MenuButton(String text, Icon icon) {
         this.setText(text);
-        this.setIcon(icon);
+        try {
+            this.setIcon(icon);
+        } catch (Exception exc) {
+            Main.log(String.format("Failure loading a menu button icon: %s", exc.getMessage()));
+            this.setIcon(new ImageIcon(ImageMemory.findImage("notfound.png").getImage()));
+        }
         this.setBackground(new Color(222, 129, 129));
         this.addActionListener(this);
         this.setForeground(new Color(255, 255, 255));
@@ -48,7 +53,7 @@ public class MenuButton extends JButton implements ActionListener {
     }
     public MenuButton(String text) {
         this.setText(text);
-        this.setIcon((Icon) ImageMemory.findImage("notfound.png"));
+        this.setIcon(new ImageIcon(ImageMemory.findImage("notfound.png").getImage()));
         this.setBackground(new Color(222, 129, 129));
         this.addActionListener(this);
         this.setForeground(new Color(255, 255, 255));

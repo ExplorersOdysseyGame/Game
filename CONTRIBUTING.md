@@ -1,5 +1,5 @@
 # Contribution Guidelines
-Use the Table of Contents button on the top-left of GitHub's built-in file viewer to quickly reach other sections.
+Use the "Table of Contents" button on the top-left of GitHub's built-in file viewer to quickly reach other sections.
 
 ## Issues
 ### Creating an Issue
