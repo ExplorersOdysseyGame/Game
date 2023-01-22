@@ -2,14 +2,14 @@ package io.github.explorersodysseygame.game.player;
 
 import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import io.github.explorersodysseygame.game.common.data.EntityData;
-import io.github.explorersodysseygame.game.common.util.spritesheet.SpritesheetReader;
+import io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetReader;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.ImageObserver;
 
 import static io.github.explorersodysseygame.game.client.renderer.GameScreen.GRID_SIZE;
-import static io.github.explorersodysseygame.game.common.util.spritesheet.SpritesheetReader.SpritesheetMemory;
+import static io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetReader.SpritesheetMemory;
 
 public class Player {
 

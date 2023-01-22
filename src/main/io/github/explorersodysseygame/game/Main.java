@@ -1,8 +1,8 @@
 package io.github.explorersodysseygame.game;
 
 import io.github.explorersodysseygame.game.common.logger.Logger;
-import io.github.explorersodysseygame.game.common.util.image.ImageReader;
-import io.github.explorersodysseygame.game.common.util.spritesheet.SpritesheetReader;
+import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
+import io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetReader;
 
 import java.awt.*;
 

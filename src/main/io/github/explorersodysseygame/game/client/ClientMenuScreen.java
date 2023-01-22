@@ -3,14 +3,12 @@ package io.github.explorersodysseygame.game.client;
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.common.menu.MenuButton;
 import io.github.explorersodysseygame.game.common.menu.MenuScreen;
-import io.github.explorersodysseygame.game.common.util.image.ImageReader;
+import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class ClientMenuScreen extends MenuScreen {
     public static final int GRID_SIZE = 20; // Pixel size of each square on the menu grid.

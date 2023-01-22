@@ -1,18 +1,15 @@
 package io.github.explorersodysseygame.game.common.menu;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.common.util.image.ImageReader;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.Objects;
 
-import static io.github.explorersodysseygame.game.common.util.image.ImageReader.ImageMemory;
+import static io.github.explorersodysseygame.game.common.util.Image.ImageReader.ImageMemory;
 
 public class MenuButton extends JButton implements ActionListener {
 

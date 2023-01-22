@@ -1,15 +1,14 @@
 package io.github.explorersodysseygame.game.client;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.client.game.InGameMenu;
 import io.github.explorersodysseygame.game.common.menu.MenuScreen;
 import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import io.github.explorersodysseygame.game.common.Window;
-import io.github.explorersodysseygame.game.common.util.image.ImageReader;
+import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 
-import static io.github.explorersodysseygame.game.common.util.image.ImageReader.ImageMemory;
+import static io.github.explorersodysseygame.game.common.util.Image.ImageReader.ImageMemory;
 
 public class ClientWindow extends Window {
 

@@ -1,11 +1,11 @@
 package io.github.explorersodysseygame.game.common;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.common.util.image.ImageReader;
+import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 
-import static io.github.explorersodysseygame.game.common.util.image.ImageReader.ImageMemory;
+import static io.github.explorersodysseygame.game.common.util.Image.ImageReader.ImageMemory;
 
 public class Window {
     public static JFrame window;

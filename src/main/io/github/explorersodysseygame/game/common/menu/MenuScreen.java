@@ -1,25 +1,16 @@
 package io.github.explorersodysseygame.game.common.menu;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.common.util.image.ImageClass;
-import io.github.explorersodysseygame.game.common.util.image.ImageReader;
+import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Objects;
-
-import static io.github.explorersodysseygame.game.common.util.image.ImageReader.ImageMemory;
 
 public class MenuScreen extends JPanel implements ActionListener, KeyListener {
 

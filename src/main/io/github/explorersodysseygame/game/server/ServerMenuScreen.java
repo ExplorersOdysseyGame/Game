@@ -1,11 +1,10 @@
 package io.github.explorersodysseygame.game.server;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.client.Client;
-import io.github.explorersodysseygame.game.client.ClientWindow;
+import io.github.explorersodysseygame.game.server.Server;
 import io.github.explorersodysseygame.game.common.menu.MenuButton;
 import io.github.explorersodysseygame.game.common.menu.MenuScreen;
-import io.github.explorersodysseygame.game.common.util.image.ImageReader;
+import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +31,7 @@ public class ServerMenuScreen extends MenuScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));
-                ServerWindow.loadGame(Client.getWindow().getWindowAsJFrame(), ServerMenuScreen.getScreen());
+                ServerWindow.loadGame(ServerWindow.getWindowAsJFrame(), ServerMenuScreen.getScreen());
 
             }
         };
