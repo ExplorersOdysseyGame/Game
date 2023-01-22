@@ -47,26 +47,35 @@ public class Spritesheet {
             }
             return null;
         }
+
+        public ArrayList<String> outputMemory() {
+            ArrayList<String> out = new ArrayList<>();
+            for (SpritesheetClass spritesheetClass : this) {
+                out.add(spritesheetClass.getName());
+            }
+            Main.log(String.valueOf(out));
+            return out;
+        }
     }
 
-    public static class SpritesheetReader extends ImageReader {
+    public static class SpritesheetReader {
         /*
          Reads a spritesheet from the resources directory and saves it to SpritesheetMemory.
          */
         public static final SpritesheetMemory SpritesheetMemory = new SpritesheetMemory();
 
         @SuppressWarnings("UnusedReturnValue")
-        public static BufferedImage read(String file) {
+        public static SpritesheetClass read(String file) {
             try {
                 BufferedImage image = ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource(String.format("/resources/%s", file))));
                 SpritesheetClass sprClass = new SpritesheetClass(image, file);
                 SpritesheetMemory.add(sprClass);
                 Main.log(String.format("Loaded spritesheet file: %s", file));
-                return image;
+                return sprClass;
             } catch (Exception exc) {
                 Main.log(String.format("Error opening spritesheet file '%s': %s", file, detailError(exc.getMessage())));
                 try {
-                    return ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource("/resources/notfound.png")));
+                    return new SpritesheetClass(ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource("/resources/notfound.png"))), "notfound.png");
                 } catch (Exception exc1) {
                     Main.log(String.format("Unable to load fallback image 'notfound.png': %s", detailError(exc1.getMessage())));
                     Main.log("Force-stopping game");

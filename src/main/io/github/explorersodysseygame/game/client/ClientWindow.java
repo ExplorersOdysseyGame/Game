@@ -8,7 +8,7 @@ import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 
-import static io.github.explorersodysseygame.game.common.util.Image.ImageReader.ImageMemory;
+import static io.github.explorersodysseygame.game.Main.ImageMemory;
 
 public class ClientWindow extends Window {
 

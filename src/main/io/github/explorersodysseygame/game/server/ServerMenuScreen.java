@@ -9,8 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-
-import static io.github.explorersodysseygame.game.common.util.Image.ImageReader.ImageMemory;
+import java.awt.image.BufferedImage;
+import java.util.Objects;
 
 public class ServerMenuScreen extends MenuScreen {
     public static final int GRID_SIZE = 20; // Pixel size of each square on the menu grid.
@@ -26,9 +26,9 @@ public class ServerMenuScreen extends MenuScreen {
         this.setLayout(null);
         screen = this;
 
-        ImageReader.read("menu/host.png");
+        BufferedImage IMG_host = Objects.requireNonNull(ImageReader.read("menu/host.png")).getImage();
 
-        MenuButton hostButton = new MenuButton("Begin Hosting", new ImageIcon(ImageMemory.findImage("menu/host.png").getImage())) {
+        MenuButton hostButton = new MenuButton("Begin Hosting", new ImageIcon(IMG_host)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));

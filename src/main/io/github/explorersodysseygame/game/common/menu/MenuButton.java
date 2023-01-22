@@ -9,8 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-import static io.github.explorersodysseygame.game.common.util.Image.ImageReader.ImageMemory;
-
+import static io.github.explorersodysseygame.game.Main.ImageMemory;
 public class MenuButton extends JButton implements ActionListener {
 
     public static class MenuButtonSelectedUI extends BasicButtonUI {

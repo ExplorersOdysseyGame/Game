@@ -9,9 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.Objects;
-
-import static io.github.explorersodysseygame.game.common.util.Image.ImageReader.ImageMemory;
 
 public class MenuScreen extends JPanel implements ActionListener, KeyListener {
 
@@ -36,10 +35,10 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
         setLayout(null);
         screen = this;
 
-        ImageReader.read("social/discord.png");
-        ImageReader.read("social/reddit.png");
+        BufferedImage IMG_discord = Objects.requireNonNull(ImageReader.read("social/discord.png")).getImage();
+        BufferedImage IMG_reddit = Objects.requireNonNull(ImageReader.read("social/reddit.png")).getImage();
 
-        MenuButton discordSocial = new MenuButton("", new ImageIcon(ImageMemory.findImage("social/discord.png").getImage())) {
+        MenuButton discordSocial = new MenuButton("", new ImageIcon(IMG_discord)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log("Pressed Discord menu button");
@@ -55,7 +54,7 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
         discordSocial.setBounds(width-37,height-37,32,32);
         add(discordSocial);
 
-        MenuButton redditSocial = new MenuButton("", new ImageIcon(ImageMemory.findImage("social/reddit.png").getImage())) {
+        MenuButton redditSocial = new MenuButton("", new ImageIcon(IMG_reddit)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log("Pressed Reddit menu button");
