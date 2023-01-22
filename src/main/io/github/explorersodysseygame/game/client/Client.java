@@ -20,6 +20,7 @@ public class Client extends Main {
 
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static ClientWindow getWindow() {
         return CLIENT_WINDOW;
     }

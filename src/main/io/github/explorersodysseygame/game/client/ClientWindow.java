@@ -68,6 +68,6 @@ public class ClientWindow extends Window {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> initWindow());
+        SwingUtilities.invokeLater(ClientWindow::initWindow);
     }
 }

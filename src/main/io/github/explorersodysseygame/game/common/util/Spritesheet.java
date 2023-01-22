@@ -52,9 +52,10 @@ public class Spritesheet {
         /*
          Reads a spritesheet from the resources directory and saves it to SpritesheetMemory.
          */
-        public static SpritesheetMemory SpritesheetMemory = new SpritesheetMemory();
+        public static final SpritesheetMemory SpritesheetMemory = new SpritesheetMemory();
 
-        public static java.awt.image.BufferedImage read(String file) {
+        @SuppressWarnings("UnusedReturnValue")
+        public static BufferedImage read(String file) {
             try {
                 BufferedImage image = ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource(String.format("/resources/%s", file))));
                 SpritesheetClass sprClass = new SpritesheetClass(image, file);
@@ -67,7 +68,7 @@ public class Spritesheet {
                     return ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource("/resources/notfound.png")));
                 } catch (Exception exc1) {
                     Main.log(String.format("Unable to load fallback image 'notfound.png': %s", detailError(exc1.getMessage())));
-                    Main.log(String.format("Force-stopping game"));
+                    Main.log("Force-stopping game");
                     Main.stopGame();
                 }
             }

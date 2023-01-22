@@ -42,21 +42,18 @@ public class InGameMenu extends JPanel implements ActionListener {
         }
     }
 
-    private JPanel innerPanel;
-    private int width;
-    private int height;
     public InGameMenu(Dimension screenDimensions) {
-        width = (int) (screenDimensions.getWidth()/2)+32;
-        height = (int) (screenDimensions.getHeight())-159;
+        int width = (int) (screenDimensions.getWidth() / 2) + 32;
+        int height = (int) (screenDimensions.getHeight()) - 159;
         setPreferredSize(new Dimension(width, height));
         setBounds(screenDimensions.width/5+1, 60, width, height);
         setLayout(null);
         setVisible(false);
         setBackground(new Color(40, 64, 40));
 
-        innerPanel = new JPanel();
+        JPanel innerPanel = new JPanel();
         innerPanel.setBackground(new Color(60, 84, 60));
-        innerPanel.setBounds(10, 10, width-20, height-20);
+        innerPanel.setBounds(10, 10, width -20, height -20);
         innerPanel.setLayout(null);
         add(innerPanel);
 
@@ -67,7 +64,7 @@ public class InGameMenu extends JPanel implements ActionListener {
                 ClientWindow.exitGame(ClientWindow.getWindowAsJFrame(), GameScreen.getScreen());
             }
         };
-        menuButton.setBounds(5, 5, width-30, 20);
+        menuButton.setBounds(5, 5, width -30, 20);
         innerPanel.add(menuButton);
     }
 

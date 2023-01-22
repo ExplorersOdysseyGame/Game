@@ -4,16 +4,14 @@ import io.github.explorersodysseygame.game.common.logger.Logger;
 import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 import io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetReader;
 
-import java.awt.*;
-
 public class Main {
-    public static String gameName = "ExplorersOdyssey"; // Name of the game. Do not change, this is mainly for referencing the name in other classes.
-    public static String gameID = gameName.toLowerCase(); // Lowercase version of the game name.
-    public static String gameType = "vanilla"; // CHANGE TO SOMETHING ELSE IN MODDED VERSIONS
+    public static final String gameName = "ExplorersOdyssey"; // Name of the game. Do not change, this is mainly for referencing the name in other classes.
+    public static final String gameID = gameName.toLowerCase(); // Lowercase version of the game name.
+    public static final String gameType = "vanilla"; // CHANGE TO SOMETHING ELSE IN MODDED VERSIONS
 
-    public static Logger logger = new Logger(gameID);
-    public static String versionString = "0.0.1-prealpha-1"; // Semantic versioning. Uses a basic version (eg. 1.2.3) then a status (prealpha, alpha, beta, rc) then a status version.
-    public static int versionNumeric = 1; // The numeric version. Increment this every time versionString changes.
+    public static final Logger logger = new Logger(gameID);
+    public static final String versionString = "0.0.1-prealpha-1"; // Semantic versioning. Uses a basic version (e.g. 1.2.3) then a status (prealpha, alpha, beta, rc) then a status version.
+    public static final int versionNumeric = 1; // The numeric version. Increment this every time versionString changes.
 
     public static void loadGlobalAssets() {
         ImageReader.read("notfound.png"); // Not Found X image

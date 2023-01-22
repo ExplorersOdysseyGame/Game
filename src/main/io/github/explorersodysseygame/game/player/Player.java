@@ -14,11 +14,10 @@ import static io.github.explorersodysseygame.game.common.util.Spritesheet.Sprite
 public class Player {
 
     private Image image;
-    private EntityData data;
-    private Point pos;
+    private final Point pos;
 
     public Player() {
-        data = new EntityData("player");
+        EntityData data = new EntityData("player");
         SpritesheetReader.read("player.png");
         loadImage();
 

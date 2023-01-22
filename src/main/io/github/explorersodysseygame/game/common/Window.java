@@ -30,6 +30,6 @@ public class Window {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> initWindow());
+        SwingUtilities.invokeLater(Window::initWindow);
     }
 }

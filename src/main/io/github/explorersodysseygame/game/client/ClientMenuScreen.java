@@ -10,23 +10,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
+import static io.github.explorersodysseygame.game.common.util.Image.ImageReader.ImageMemory;
+
 public class ClientMenuScreen extends MenuScreen {
     public static final int GRID_SIZE = 20; // Pixel size of each square on the menu grid.
     public static final int GRID_ROWS = 24; // Amount to multiply GRID_SIZE by for width.
     public static final int GRID_COLUMNS = GRID_ROWS; // Window is always square, so this is GRID_ROWS
     public static ClientMenuScreen screen;
 
-    private final int width;
-    private final int height;
     public ClientMenuScreen() {
-        width = GRID_SIZE * GRID_ROWS - 1;
-        height = GRID_SIZE * GRID_COLUMNS;
+        int width = GRID_SIZE * GRID_ROWS - 1;
+        int height = GRID_SIZE * GRID_COLUMNS;
         setPreferredSize(new Dimension(width, height));
         setBackground(new Color(255, 162, 162));
         this.setLayout(null);
         screen = this;
 
-        MenuButton playButton = new MenuButton("Play", new ImageIcon(ImageReader.read("menu/play.png"))) {
+        ImageReader.read("menu/play.png");
+
+        MenuButton playButton = new MenuButton("Play", new ImageIcon(ImageMemory.findImage("menu/play.png"))) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));

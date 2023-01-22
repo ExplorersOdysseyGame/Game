@@ -49,9 +49,10 @@ public class Image {
      Reads an image from the resources directory and saves it to ImageMemory.
      */
 
-        public static ImageMemory ImageMemory = new ImageMemory();
+        public static final ImageMemory ImageMemory = new ImageMemory();
 
-        public static java.awt.image.BufferedImage read(String file) {
+        @SuppressWarnings("SameReturnValue")
+        public static BufferedImage read(String file) {
             try {
                 BufferedImage image = ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource(String.format("/resources/%s", file))));
                 ImageClass imgClass = new ImageClass(image, file);
@@ -64,7 +65,7 @@ public class Image {
                     return ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource("/resources/notfound.png")));
                 } catch (Exception exc1) {
                     Main.log(String.format("Unable to load fallback image 'notfound.png': %s", detailError(exc1.getMessage())));
-                    Main.log(String.format("Force-stopping game"));
+                    Main.log("Force-stopping game");
                     Main.stopGame();
                 }
             }

@@ -1,6 +1,6 @@
 package io.github.explorersodysseygame.game.common.data;
 
-public class EntityData extends DataHolder{
+public class EntityData extends DataHolder {
 
     public EntityData(String name, Integer health, Integer maxHealth, Integer hunger, Integer maxHunger) {
         super(name);

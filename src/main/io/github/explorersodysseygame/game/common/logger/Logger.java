@@ -15,7 +15,7 @@ public class Logger {
     public static void log(String msg) {
 
         Calendar now = Calendar.getInstance();
-        System.out.println(String.format("[%s/%s/%s %s:%s:%s][%s] %s",
+        System.out.printf("[%s/%s/%s %s:%s:%s][%s] %s%n",
             parseNumber(now.get(Calendar.DAY_OF_MONTH)),
             parseNumber(now.get(Calendar.MONTH)+1),
             parseNumber(now.get(Calendar.YEAR)),
@@ -23,8 +23,7 @@ public class Logger {
             parseNumber(now.get(Calendar.MINUTE)),
             parseNumber(now.get(Calendar.SECOND)),
             namespace,
-            msg)
-        );
+            msg);
 
     }
 

@@ -2,13 +2,12 @@ package io.github.explorersodysseygame.game.common.data;
 
 import io.github.explorersodysseygame.game.Main;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class DataHolder extends ArrayList<DataObject> {
 
-    public String alias;
+    public final String alias;
 
     public DataHolder(String name) {
         alias = name;
@@ -31,7 +30,7 @@ public class DataHolder extends ArrayList<DataObject> {
             data.append(String.format("[%s::%s] ", dataObject.getName(), dataObject.getValue()));
             ret.add(dataObject);
         }
-        Main.log(String.format("Data in data-holder '%s': %s", alias, data.toString()));
+        Main.log(String.format("Data in data-holder '%s': %s", alias, data));
         return ret;
     }
 

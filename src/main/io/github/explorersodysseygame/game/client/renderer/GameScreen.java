@@ -1,6 +1,5 @@
 package io.github.explorersodysseygame.game.client.renderer;
 
-import io.github.explorersodysseygame.game.client.ClientMenuScreen;
 import io.github.explorersodysseygame.game.client.game.InGameMenu;
 import io.github.explorersodysseygame.game.player.Player;
 
@@ -9,18 +8,16 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class GameScreen extends JPanel implements ActionListener, KeyListener {
-    private final int TPS = 1/20; // Amount of ticks per second, as 1/[ticks]. Defaults to 1/20, as 20 TPS.
     public static final int GRID_SIZE = 20; // Pixel size of each square on the game grid.
     public static final int GRID_ROWS = 24; // Amount to multiply GRID_SIZE by for width.
     public static final int GRID_COLUMNS = GRID_ROWS; // Window is always square, so this is GRID_ROWS
-    private Timer timer;
-    private Player player;
+    private final Player player;
 
-    private InGameMenu inGameMenu;
+    private final InGameMenu inGameMenu;
     private static GameScreen screen;
 
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
     public GameScreen() {
         width = (GRID_SIZE * GRID_ROWS + GRID_SIZE) - 4;
         height = (GRID_SIZE * GRID_COLUMNS + (GRID_SIZE * 2)) - 1;
@@ -31,7 +28,9 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
         setLayout(null);
         setBackground(new Color(162, 255, 162));
         player = new Player();
-        timer = new Timer(TPS, this);
+        // Amount of ticks per second, as 1/[ticks]. Defaults to 1/20, as 20 TPS.
+        int TPS = 1 / 20;
+        Timer timer = new Timer(TPS, this);
         timer.start();
         screen = this;
     }

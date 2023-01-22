@@ -17,11 +17,9 @@ public class ServerMenuScreen extends MenuScreen {
     public static final int GRID_COLUMNS = GRID_ROWS; // Window is always square, so this is GRID_ROWS
     public static ServerMenuScreen screen;
 
-    private final int width;
-    private final int height;
     public ServerMenuScreen() {
-        width = GRID_SIZE * GRID_ROWS - 1;
-        height = GRID_SIZE * GRID_COLUMNS;
+        int width = GRID_SIZE * GRID_ROWS - 1;
+        int height = GRID_SIZE * GRID_COLUMNS;
         setPreferredSize(new Dimension(width, height));
         setBackground(new Color(255, 162, 162));
         this.setLayout(null);

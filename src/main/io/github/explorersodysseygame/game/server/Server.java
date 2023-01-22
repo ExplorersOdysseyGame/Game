@@ -16,6 +16,7 @@ public class Server extends Main {
 
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static ServerWindow getWindow() {
             return SERVER_WINDOW;
         }
