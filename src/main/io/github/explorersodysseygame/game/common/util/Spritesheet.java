@@ -2,6 +2,7 @@ package io.github.explorersodysseygame.game.common.util;
 
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
+import io.github.explorersodysseygame.game.common.util.Image.ImageClass;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -28,8 +29,8 @@ public class Spritesheet {
         public BufferedImage getSheet() {
             return sheet;
         }
-        public BufferedImage getImage(Integer row, Integer col) {
-            return sheet.getSubimage((8*row)-8, (8*col)-8, 8*row, 8*col);
+        public ImageClass getImage(Integer row, Integer col) {
+            return new ImageClass(sheet.getSubimage((8*row)-8, (8*col)-8, (8*row), (8*col)), "spritesheetSelection");
         }
     }
 

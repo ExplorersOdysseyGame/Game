@@ -29,6 +29,21 @@ public class Image {
         public BufferedImage getImage() {
             return image;
         }
+        public ImageClass changeColour(int from, int to) {
+            BufferedImage newImage = new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
+            for (int i = 0; i < image.getWidth(); i++) {
+                for (int j = 0; j < image.getHeight(); j++) {
+                    int color = image.getRGB(i, j);
+                    if (color == from) {
+                        newImage.setRGB(i, j, to);
+                    }
+                    else {
+                        newImage.setRGB(i, j, color);
+                    }
+                }
+            }
+            return new ImageClass(newImage, "editedImage");
+        }
     }
 
     public static class ImageMemory extends ArrayList<ImageClass> {

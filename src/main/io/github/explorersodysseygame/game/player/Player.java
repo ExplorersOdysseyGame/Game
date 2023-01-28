@@ -16,16 +16,38 @@ public class Player {
     private Image image;
     private final Point pos;
 
+    protected String lastDir; // NESW
+    private int hairColour = new Color(126, 70, 3).getRGB();
+    private int skinColour = new Color(222, 169, 107).getRGB();
+    private int shirtColour = new Color(134, 0, 95).getRGB();
+    private int shoeColour = new Color(26, 26, 26).getRGB();
+
+    public void changeHairColour(Color to) {hairColour = to.getRGB();}
+    public void changeSkinColour(Color to) {skinColour = to.getRGB();}
+    public void changeShirtColour(Color to) {shirtColour = to.getRGB();}
+    public void changeShoeColour(Color to) {shoeColour = to.getRGB();}
+
     public Player() {
         EntityData data = new EntityData("player");
         SpritesheetReader.read("player.png");
-        loadImage();
+        loadImage(false);
 
         pos = new Point(0, 0);
     }
 
-    private void loadImage() {
-        image = SpritesheetMemory.findSheet("player.png").getImage(1, 1).getScaledInstance(GRID_SIZE, GRID_SIZE, Image.SCALE_FAST);
+    private void loadImage(boolean isMoving) {
+        Integer row = 1;Integer col = 1;
+        if (isMoving) {
+            // TODO: Movement animation
+            return;
+        }
+
+        image = SpritesheetMemory.findSheet("player.png").getImage(row, col)
+                .changeColour(new Color(42, 255, 0).getRGB(), hairColour)
+                .changeColour(new Color(255, 0, 0).getRGB(), skinColour)
+                .changeColour(new Color(165, 0, 255).getRGB(), shirtColour)
+                .changeColour(new Color(0, 203, 255).getRGB(), shoeColour)
+                .getImage().getScaledInstance(GRID_SIZE, GRID_SIZE, Image.SCALE_FAST);
     }
 
     public void draw(Graphics g, ImageObserver observer) {
@@ -42,15 +64,23 @@ public class Player {
 
         if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
             pos.translate(0, -1);
+            lastDir = "n";
+            loadImage(true);
         }
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
             pos.translate(1, 0);
+            lastDir = "e";
+            loadImage(true);
         }
         if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
             pos.translate(0, 1);
+            lastDir = "s";
+            loadImage(true);
         }
         if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
             pos.translate(-1, 0);
+            lastDir = "w";
+            loadImage(true);
         }
     }
 

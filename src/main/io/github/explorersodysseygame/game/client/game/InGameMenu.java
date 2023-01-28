@@ -71,6 +71,7 @@ public class InGameMenu extends JPanel implements ActionListener {
 
         BufferedImage IMG_menu = Objects.requireNonNull(ImageReader.read("menu/menu.png")).getImage();
         BufferedImage IMG_pause = Objects.requireNonNull(ImageReader.read("menu/pause.png")).getImage();
+        BufferedImage IMG_avatar = Objects.requireNonNull(ImageReader.read("menu/avatar.png")).getImage();
 
         IGMButton pauseIndicator = new IGMButton("", new ImageIcon(IMG_pause.getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
         pauseIndicator.setBackground(new Color(25, 25, 25));
@@ -83,13 +84,24 @@ public class InGameMenu extends JPanel implements ActionListener {
         IGMButton menuButton = new IGMButton("Menu", new ImageIcon(IMG_menu)) {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.log(String.format("Pressed %s in-game menu button", this.getText()));
+                Main.log(String.format("Pressed in-game %s button", this.getText()));
                 ClientWindow.exitGame(ClientWindow.getWindowAsJFrame(), GameScreen.getScreen());
             }
         };
-        menuButton.setBounds(5, 5, width -30, 20);
+        menuButton.setBounds(5, 5, width-30, 20);
         menuButton.setBackground(new Color(75, 75, 75));
         innerPanel.add(menuButton);
+
+        IGMButton avatarButton = new IGMButton("Avatar", new ImageIcon(IMG_avatar)) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.log(String.format("Pressed in-game %s button", this.getText()));
+                ClientWindow.exitGame(ClientWindow.getWindowAsJFrame(), GameScreen.getScreen());
+            }
+        };
+        avatarButton.setBounds(5, 30, width-30, 20);
+        avatarButton.setBackground(new Color(75, 75, 75));
+        innerPanel.add(avatarButton);
     }
 
     public void toggleVisibility() {

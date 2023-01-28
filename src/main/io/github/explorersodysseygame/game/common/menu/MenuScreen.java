@@ -1,6 +1,8 @@
 package io.github.explorersodysseygame.game.common.menu;
 
 import io.github.explorersodysseygame.game.Main;
+import io.github.explorersodysseygame.game.client.ClientMenuScreen;
+import io.github.explorersodysseygame.game.client.ClientWindow;
 import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
@@ -37,6 +39,7 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
 
         BufferedImage IMG_discord = Objects.requireNonNull(ImageReader.read("social/discord.png")).getImage();
         BufferedImage IMG_reddit = Objects.requireNonNull(ImageReader.read("social/reddit.png")).getImage();
+        BufferedImage IMG_quit = Objects.requireNonNull(ImageReader.read("menu/quit.png")).getImage();
 
         MenuButton discordSocial = new MenuButton("", new ImageIcon(IMG_discord)) {
             @Override
@@ -69,6 +72,19 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
         redditSocial.setUI(new SocialButtonSelectedUI(BGCOLOUR));
         redditSocial.setBounds(5,height-37,32,32);
         add(redditSocial);
+
+        MenuButton quitButton = new MenuButton("Quit", new ImageIcon(IMG_quit)) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.log(String.format("Pressed %s menu button", this.getText()));
+                ClientWindow.loadGame(ClientWindow.getWindowAsJFrame(), ClientMenuScreen.getScreen());
+                Main.stopGame();
+                System.exit(0);
+            }
+        };
+        quitButton.setBounds(GRID_SIZE * (GRID_ROWS/3), height-(GRID_SIZE * 3), GRID_SIZE * (GRID_ROWS / 3), GRID_SIZE);
+
+        this.add(quitButton);
     }
 
     public static MenuScreen getScreen() {
