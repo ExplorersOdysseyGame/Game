@@ -85,7 +85,6 @@ public class Image {
                 BufferedImage image = ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource(String.format("/resources/%s", file))));
                 ImageClass imgClass = new ImageClass(image, file);
                 ImageMemory.add(imgClass);
-                Main.log(String.format("Loaded image file: %s", file));
                 return imgClass;
             } catch (Exception exc) {
                 Main.log(String.format("Error opening image file '%s': %s", file, detailError(exc.getMessage())));

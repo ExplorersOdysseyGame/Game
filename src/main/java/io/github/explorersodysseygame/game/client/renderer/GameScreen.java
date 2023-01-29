@@ -1,7 +1,7 @@
 package io.github.explorersodysseygame.game.client.renderer;
 
 import io.github.explorersodysseygame.game.client.game.InGameMenu;
-import io.github.explorersodysseygame.game.player.Player;
+import io.github.explorersodysseygame.game.common.entity.Player;
 
 import javax.swing.*;
 import java.awt.*;

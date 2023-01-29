@@ -1,4 +1,4 @@
-package io.github.explorersodysseygame.game.player;
+package io.github.explorersodysseygame.game.common.entity;
 
 import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import io.github.explorersodysseygame.game.common.data.EntityData;
@@ -17,25 +17,30 @@ public class Player {
     private final Point pos;
 
     protected String lastDir; // NESW
-    private int hairColour = new Color(126, 70, 3).getRGB();
-    private int skinColour = new Color(222, 169, 107).getRGB();
-    private int shirtColour = new Color(134, 0, 95).getRGB();
-    private int shoeColour = new Color(26, 26, 26).getRGB();
+    private Color hairColour = new Color(126, 70, 3);
+    private Color skinColour = new Color(222, 169, 107);
+    private Color shirtColour = new Color(134, 0, 95);
+    private Color shoeColour = new Color(26, 26, 26);
 
-    public void changeHairColour(Color to) {hairColour = to.getRGB();}
-    public void changeSkinColour(Color to) {skinColour = to.getRGB();}
-    public void changeShirtColour(Color to) {shirtColour = to.getRGB();}
-    public void changeShoeColour(Color to) {shoeColour = to.getRGB();}
+    public void changeHairColour(Color to) {hairColour = to;}
+    public void changeSkinColour(Color to) {skinColour = to;}
+    public void changeShirtColour(Color to) {shirtColour = to;}
+    public void changeShoeColour(Color to) {shoeColour = to;}
 
     public Player() {
         EntityData data = new EntityData("player");
-        SpritesheetReader.read("player.png");
+        SpritesheetReader.read("entity/player.png");
         loadImage(false);
 
         pos = new Point(0, 0);
     }
 
     public Image getImage() { return image; }
+    public Color[] getColorData() {return new Color[]{hairColour, skinColour, shirtColour, shoeColour};}
+
+    public void updateImage() {
+        loadImage(false);
+    }
 
     private void loadImage(boolean isMoving) {
         Integer row = 1;Integer col = 1;
@@ -44,11 +49,11 @@ public class Player {
             return;
         }
 
-        image = SpritesheetMemory.findSheet("player.png").getImage(row, col)
-                .changeColour(new Color(42, 255, 0).getRGB(), hairColour)
-                .changeColour(new Color(255, 0, 0).getRGB(), skinColour)
-                .changeColour(new Color(165, 0, 255).getRGB(), shirtColour)
-                .changeColour(new Color(0, 203, 255).getRGB(), shoeColour)
+        image = SpritesheetMemory.findSheet("entity/player.png").getImage(row, col)
+                .changeColour(new Color(42, 255, 0).getRGB(), hairColour.getRGB())
+                .changeColour(new Color(255, 0, 0).getRGB(), skinColour.getRGB())
+                .changeColour(new Color(165, 0, 255).getRGB(), shirtColour.getRGB())
+                .changeColour(new Color(0, 203, 255).getRGB(), shoeColour.getRGB())
                 .getImage().getScaledInstance(GRID_SIZE, GRID_SIZE, Image.SCALE_FAST);
     }
 

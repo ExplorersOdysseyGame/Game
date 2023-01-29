@@ -1,7 +1,10 @@
 package io.github.explorersodysseygame.game.client.game;
 
 import io.github.explorersodysseygame.game.Main;
+import io.github.explorersodysseygame.game.client.Client;
+import io.github.explorersodysseygame.game.client.game.InGameMenu.IGMButton;
 import io.github.explorersodysseygame.game.client.renderer.GameScreen;
+import io.github.explorersodysseygame.game.common.ui.PickerBar.RainbowPickerBar;
 import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
@@ -9,6 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class AvatarMenu extends JPanel implements ActionListener {
@@ -19,6 +23,7 @@ public class AvatarMenu extends JPanel implements ActionListener {
         setName("Avatar Menu");
 
         BufferedImage IMG_menu = Objects.requireNonNull(ImageReader.read("menu/menu.png")).getImage();
+        BufferedImage IMG_refresh = Objects.requireNonNull(ImageReader.read("menu/refresh.png")).getImage();
 
         setPreferredSize(screenDimensions);
         setBounds(0, 0, screenDimensions.width, screenDimensions.height);
@@ -62,6 +67,21 @@ public class AvatarMenu extends JPanel implements ActionListener {
         exitButton.setBounds(5, 5, (width*3)-30, 20);
         exitButton.setBackground(new Color(75, 75, 75));
         innerPanel.add(exitButton);
+
+        RainbowPickerBar hairColourBar = new RainbowPickerBar();
+        hairColourBar.setBounds(5, 30, (width*3)-55, 20);
+        innerPanel.add(hairColourBar);
+        IGMButton refreshHairClr = new IGMButton("", new ImageIcon(IMG_refresh)) {
+            @Override public void actionPerformed(ActionEvent e) {
+                GameScreen.player.changeHairColour(hairColourBar.getSelectedColor());
+                GameScreen.player.updateImage();
+                picture.setIcon(new ImageIcon(GameScreen.player.getImage().getScaledInstance(width, width, Image.SCALE_FAST)));
+                Client.log(Arrays.toString(GameScreen.player.getColorData()));
+            }
+        };
+        refreshHairClr.setBounds(hairColourBar.getWidth()+10, 30, 20, 20);
+        refreshHairClr.setBackground(new Color(75, 75, 75));
+        innerPanel.add(refreshHairClr);
     }
 
     @Override
