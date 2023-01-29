@@ -15,7 +15,10 @@ import java.util.Objects;
 
 public class InGameMenu extends JPanel implements ActionListener {
 
-    private static class IGMButton extends MenuButton {
+    protected static AvatarMenu avatarMenu;
+    protected static JPanel outerPanel;
+
+    static class IGMButton extends MenuButton {
         public IGMButton(String text, Icon icon) {
             super("Menu", icon);
             this.setText(text);
@@ -46,8 +49,11 @@ public class InGameMenu extends JPanel implements ActionListener {
     }
 
     public InGameMenu(Dimension screenDimensions) {
+        avatarMenu = new AvatarMenu(screenDimensions);
         int width = (int) (screenDimensions.getWidth() / 2) + 32;
         int height = (int) (screenDimensions.getHeight()) - 159;
+
+        setName("In Game Menu");
 
         setPreferredSize(screenDimensions);
         setBounds(0, 0, screenDimensions.width, screenDimensions.height);
@@ -56,7 +62,8 @@ public class InGameMenu extends JPanel implements ActionListener {
         setOpaque(true);
         setBackground(new Color(25, 25, 25));
 
-        JPanel outerPanel = new JPanel();
+        outerPanel = new JPanel();
+        outerPanel.setName("Outer Panel");
         outerPanel.setPreferredSize(new Dimension(width, height));
         outerPanel.setBounds(screenDimensions.width/5+1, 60, width, height);
         outerPanel.setLayout(null);
@@ -74,6 +81,7 @@ public class InGameMenu extends JPanel implements ActionListener {
         BufferedImage IMG_avatar = Objects.requireNonNull(ImageReader.read("menu/avatar.png")).getImage();
 
         IGMButton pauseIndicator = new IGMButton("", new ImageIcon(IMG_pause.getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
+        pauseIndicator.setName("Pause Indicator");
         pauseIndicator.setBackground(new Color(25, 25, 25));
         pauseIndicator.setBounds((screenDimensions.width/2)-20,16, 32, 32);
         final MenuButton.MenuButtonSelectedUI pauseIndicatorUI = new MenuButton.MenuButtonSelectedUI();
@@ -96,12 +104,14 @@ public class InGameMenu extends JPanel implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed in-game %s button", this.getText()));
-                ClientWindow.exitGame(ClientWindow.getWindowAsJFrame(), GameScreen.getScreen());
+                avatarMenu.setVisible(true);outerPanel.setVisible(false);
             }
         };
         avatarButton.setBounds(5, 30, width-30, 20);
         avatarButton.setBackground(new Color(75, 75, 75));
         innerPanel.add(avatarButton);
+
+        add(avatarMenu);
     }
 
     public void toggleVisibility() {

@@ -3,15 +3,18 @@ package io.github.explorersodysseygame.game.client.renderer;
 import io.github.explorersodysseygame.game.client.game.InGameMenu;
 import io.github.explorersodysseygame.game.player.Player;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class GameScreen extends JPanel implements ActionListener, KeyListener {
     public static final int GRID_SIZE = 20; // Pixel size of each square on the game grid.
     public static final int GRID_ROWS = 24; // Amount to multiply GRID_SIZE by for width.
     public static final int GRID_COLUMNS = GRID_ROWS; // Window is always square, so this is GRID_ROWS
-    private final Player player;
+    public static final Player player = new Player();
 
     private final InGameMenu inGameMenu;
     private static GameScreen screen;
@@ -27,7 +30,6 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
         setVisible(false);
         setLayout(null);
         setBackground(new Color(162, 255, 162));
-        player = new Player();
         // Amount of ticks per second, as 1/[ticks]. Defaults to 1/20, as 20 TPS.
         int TPS = 1 / 20;
         Timer timer = new Timer(TPS, this);

@@ -35,6 +35,8 @@ public class Player {
         pos = new Point(0, 0);
     }
 
+    public Image getImage() { return image; }
+
     private void loadImage(boolean isMoving) {
         Integer row = 1;Integer col = 1;
         if (isMoving) {
