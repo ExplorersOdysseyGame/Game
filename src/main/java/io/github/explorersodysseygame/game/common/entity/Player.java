@@ -1,5 +1,6 @@
 package io.github.explorersodysseygame.game.common.entity;
 
+import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import io.github.explorersodysseygame.game.common.data.EntityData;
 import io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetReader;
@@ -7,6 +8,7 @@ import io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetRe
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.ImageObserver;
+import java.util.Objects;
 
 import static io.github.explorersodysseygame.game.client.renderer.GameScreen.GRID_SIZE;
 import static io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetReader.SpritesheetMemory;
@@ -22,10 +24,14 @@ public class Player {
     private Color shirtColour = new Color(134, 0, 95);
     private Color shoeColour = new Color(26, 26, 26);
 
-    public void changeHairColour(Color to) {hairColour = to;}
-    public void changeSkinColour(Color to) {skinColour = to;}
-    public void changeShirtColour(Color to) {shirtColour = to;}
-    public void changeShoeColour(Color to) {shoeColour = to;}
+    public void changeColour(Color to, String type) {
+        if (Objects.equals(type, "Hair")) {hairColour = to.darker();}
+        else if (Objects.equals(type, "Skin")) {skinColour = to;}
+        else if (Objects.equals(type, "Shirt")) {shirtColour = to;}
+        else if (Objects.equals(type, "Shoe")) {shoeColour = to.darker().darker().darker();}
+        else {
+            Main.log("Player unable to change colour for any element, no element given");}
+    }
 
     public Player() {
         EntityData data = new EntityData("player");

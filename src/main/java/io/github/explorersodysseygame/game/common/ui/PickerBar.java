@@ -14,7 +14,7 @@ public class PickerBar {
         boolean clickingElement = false;
         Color selectedColor;
 
-        BasicPickerBar() {
+        public BasicPickerBar() {
             marker.setBackground(Color.BLACK);
             addMouseListener(this);
         }
@@ -85,6 +85,27 @@ public class PickerBar {
             Point2D end = new Point2D.Float(getWidth(), 0);
             float[] dist = {0f, .142f, .284f, .426f, .568f, .71f, .852f, 1f};
             Color[] colors = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA, Color.RED};
+            LinearGradientPaint gp =
+                    new LinearGradientPaint(start, end, dist, colors);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, getWidth(), getHeight());
+        };
+    }
+
+    public static class SkinshadePickerBar extends BasicPickerBar {
+        public SkinshadePickerBar() {
+            super();
+        }
+        @Override
+        protected void paintComponent(Graphics graphics) {
+            super.paintComponent(graphics);
+            Graphics2D g2d = (Graphics2D) graphics;
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                    RenderingHints.VALUE_ANTIALIAS_ON);
+            Point2D start = new Point2D.Float(0, 0);
+            Point2D end = new Point2D.Float(getWidth(), 0);
+            float[] dist = {0f, 0.17f, 0.34f, 0.51f, 0.68f, 1f};
+            Color[] colors = {Color.decode("#F9ECE4"), Color.decode("#F0D4C6"), Color.decode("#E3B38D"), Color.decode("#BC8D57"), Color.decode("#A96C4F"), Color.decode("#704733")};
             LinearGradientPaint gp =
                     new LinearGradientPaint(start, end, dist, colors);
             g2d.setPaint(gp);
