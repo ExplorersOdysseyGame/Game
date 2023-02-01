@@ -54,7 +54,7 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
         };
         discordSocial.setBackground(BGCOLOUR);
         discordSocial.setUI(new SocialButtonSelectedUI(BGCOLOUR));
-        discordSocial.setBounds(width-37,height-37,32,32);
+        discordSocial.setBounds((width/2)+5,height-37,32,32);
         add(discordSocial);
 
         MenuButton redditSocial = new MenuButton("", new ImageIcon(IMG_reddit)) {
@@ -70,7 +70,7 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
         };
         redditSocial.setBackground(BGCOLOUR);
         redditSocial.setUI(new SocialButtonSelectedUI(BGCOLOUR));
-        redditSocial.setBounds(5,height-37,32,32);
+        redditSocial.setBounds((width/2)-37,height-37,32,32);
         add(redditSocial);
 
         MenuButton quitButton = new MenuButton("Quit", new ImageIcon(IMG_quit)) {
@@ -82,7 +82,7 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
                 System.exit(0);
             }
         };
-        quitButton.setBounds(GRID_SIZE * (GRID_ROWS/3), height-(GRID_SIZE * 3), GRID_SIZE * (GRID_ROWS / 3), GRID_SIZE);
+        quitButton.setBounds(GRID_SIZE * (GRID_ROWS/3), (height-(GRID_SIZE * 3))-5, GRID_SIZE * (GRID_ROWS / 3), GRID_SIZE);
 
         this.add(quitButton);
     }
