@@ -30,7 +30,7 @@ public class Spritesheet {
             return sheet;
         }
         public ImageClass getImage(Integer row, Integer col) {
-            return new ImageClass(sheet.getSubimage((8*row)-8, (8*col)-8, (8*row), (8*col)), "spritesheetSelection");
+            return new ImageClass(sheet.getSubimage(8*row, 8*col, 8, 8), "spritesheetSelection");
         }
     }
 

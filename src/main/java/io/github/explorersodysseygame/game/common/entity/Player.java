@@ -24,6 +24,10 @@ public class Player {
     private Color shirtColour = new Color(134, 0, 95);
     private Color shoeColour = new Color(26, 26, 26);
 
+    private boolean altFrame = false;
+    private int curTick = 0;
+    private boolean canMove = true;
+
     public void changeColour(Color to, String type) {
         if (Objects.equals(type, "Hair")) {hairColour = to.darker();}
         else if (Objects.equals(type, "Skin")) {skinColour = to;}
@@ -49,11 +53,20 @@ public class Player {
     }
 
     private void loadImage(boolean isMoving) {
-        Integer row = 1;Integer col = 1;
+        int row;int col;
         if (isMoving) {
-            // TODO: Movement animation
-            return;
-        }
+            row = 0;
+            if (altFrame) {col = 2;} else {col = 1;}
+            if (Objects.equals(lastDir, "n")) {
+                row = 1;
+            }
+            else if (Objects.equals(lastDir, "e")) {
+                row = 2;
+            }
+            else if (Objects.equals(lastDir, "w")) {
+                row = 3;
+            }
+        } else { col = 0; row = 0; }
 
         image = SpritesheetMemory.findSheet("entity/player.png").getImage(row, col)
                 .changeColour(new Color(42, 255, 0).getRGB(), hairColour.getRGB())
@@ -72,28 +85,35 @@ public class Player {
         );
     }
 
+    private void move(int dx, int dy) {
+        pos.translate(dx, dy);
+        canMove = false;
+    }
+
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
-            pos.translate(0, -1);
-            lastDir = "n";
-            loadImage(true);
-        }
-        if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-            pos.translate(1, 0);
-            lastDir = "e";
-            loadImage(true);
-        }
-        if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
-            pos.translate(0, 1);
-            lastDir = "s";
-            loadImage(true);
-        }
-        if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-            pos.translate(-1, 0);
-            lastDir = "w";
-            loadImage(true);
+        if (canMove) {
+            if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
+                move(0, -1);
+                lastDir = "n";
+                loadImage(true);
+            }
+            if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
+                move(1, 0);
+                lastDir = "e";
+                loadImage(true);
+            }
+            if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
+                move(0, 1);
+                lastDir = "s";
+                loadImage(true);
+            }
+            if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
+                move(-1, 0);
+                lastDir = "w";
+                loadImage(true);
+            }
         }
     }
 
@@ -107,6 +127,12 @@ public class Player {
             pos.y = 0;
         } else if (pos.y >= GameScreen.GRID_ROWS) {
             pos.y = GameScreen.GRID_ROWS - 1;
+        }
+        curTick += 1;
+        if (curTick >= 10) {
+            altFrame = !altFrame;
+            curTick = 0;
+            canMove = true;
         }
     }
 
