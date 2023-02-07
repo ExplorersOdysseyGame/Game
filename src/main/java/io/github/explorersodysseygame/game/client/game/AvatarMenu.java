@@ -49,7 +49,7 @@ public class AvatarMenu extends JPanel implements ActionListener {
         picBack.setLayout(null);
         picBack.setBounds(5, 60, width, height);
         add(picBack);
-        JLabel picture = new JLabel(new ImageIcon(GameScreen.player.getImage().getScaledInstance(width, width, Image.SCALE_FAST)));
+        JLabel picture = new JLabel(new ImageIcon(GameScreen.player.getEntity().getImage().getScaledInstance(width, width, Image.SCALE_FAST)));
         picture.setBackground(new Color(60, 60, 60));
         picture.setBounds(5, 5, width-10, height-10);
         picture.setLayout(null);
@@ -79,8 +79,8 @@ public class AvatarMenu extends JPanel implements ActionListener {
                     Color c = barTypes[finalBarIndex].getSelectedColor();
                     c = new Color(c.getRed(), c.getGreen(), c.getBlue());
                     GameScreen.player.changeColour(c, barName);
-                    GameScreen.player.updateImage();
-                    picture.setIcon(new ImageIcon(GameScreen.player.getImage().getScaledInstance(width, width, Image.SCALE_FAST)));
+                    GameScreen.player.getEntity().updateImage();
+                    picture.setIcon(new ImageIcon(GameScreen.player.getEntity().getImage().getScaledInstance(width, width, Image.SCALE_FAST)));
                 }
             };
             tempReload.setBounds(barTypes[barIndex].getWidth()+10, (50*(barIndex+1))+5, 20, 20);
@@ -111,7 +111,7 @@ public class AvatarMenu extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Image plrImage = GameScreen.player.getImage();
+        Image plrImage = GameScreen.player.getEntity().getImage();
         Toolkit.getDefaultToolkit().sync();
     }
 }

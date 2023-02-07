@@ -2,7 +2,7 @@ package io.github.explorersodysseygame.game.server;
 
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.client.Client;
-import io.github.explorersodysseygame.game.common.logger.Logger;
+import io.github.explorersodysseygame.game.common.Logger;
 
 import static io.github.explorersodysseygame.game.Main.gameID;
 import static io.github.explorersodysseygame.game.Main.versionString;

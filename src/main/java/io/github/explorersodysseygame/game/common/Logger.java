@@ -1,4 +1,4 @@
-package io.github.explorersodysseygame.game.common.logger;
+package io.github.explorersodysseygame.game.common;
 
 import java.util.Calendar;
 
@@ -6,7 +6,7 @@ public class Logger {
 
     // TODO: Allow multiple instances without changing namespace globally
 
-    private String namespace;
+    private final String namespace;
 
     public Logger(String nmsp) {
         namespace = nmsp;

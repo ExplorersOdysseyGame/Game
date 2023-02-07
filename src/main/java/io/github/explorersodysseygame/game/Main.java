@@ -1,7 +1,6 @@
 package io.github.explorersodysseygame.game;
 
-import io.github.explorersodysseygame.game.client.Client;
-import io.github.explorersodysseygame.game.common.logger.Logger;
+import io.github.explorersodysseygame.game.common.Logger;
 import io.github.explorersodysseygame.game.common.util.Image;
 import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 import io.github.explorersodysseygame.game.common.util.Spritesheet;

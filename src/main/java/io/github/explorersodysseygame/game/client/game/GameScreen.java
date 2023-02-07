@@ -30,6 +30,8 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
     private final int height;
     public GameScreen(Main main) {
         player = new Player(main);
+        player.updateSwitchedColours();
+        player.getEntity().updateImage();
         width = (GRID_SIZE * GRID_ROWS + GRID_SIZE) - 4;
         height = (GRID_SIZE * GRID_COLUMNS + (GRID_SIZE * 2)) - 1;
         inGameMenu = new InGameMenu(main, new Dimension(width, height));
@@ -62,7 +64,7 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        player.tick();
+        player.getEntity().tick();
 
         repaint();
     }
@@ -71,7 +73,7 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         drawBackground(g);
-        player.draw(g, this);
+        player.getEntity().draw(g, this);
         Toolkit.getDefaultToolkit().sync();
     }
 
