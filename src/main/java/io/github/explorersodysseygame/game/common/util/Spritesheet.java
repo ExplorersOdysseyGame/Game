@@ -11,12 +11,12 @@ import java.util.Objects;
 
 public class Spritesheet {
 
-    public static class SpritesheetClass {
+    public class SpritesheetClass {
         /*
          Spritesheet class for the game, made for SpritesheetMemory to be easily searchable.
          */
-        public static BufferedImage sheet;
-        public static String alias;
+        public BufferedImage sheet;
+        public String alias;
 
         public SpritesheetClass(BufferedImage img, String als) {
             sheet = img;
@@ -30,11 +30,13 @@ public class Spritesheet {
             return sheet;
         }
         public ImageClass getImage(Integer row, Integer col) {
-            return new ImageClass(sheet.getSubimage(8*row, 8*col, 8, 8), "spritesheetSelection");
+            return new Image().new ImageClass(sheet.getSubimage(8*row, 8*col, 8, 8), "spritesheetSelection");
         }
+        public int getRows() { return sheet.getHeight()/8 - 1;}
+        public int getCols() { return sheet.getWidth()/8 - 1;}
     }
 
-    public static class SpritesheetMemory extends ArrayList<SpritesheetClass> {
+    public class SpritesheetMemory extends ArrayList<SpritesheetClass> {
         /*
          Spritesheet memory for the entire game, cleared on game end.
         */
@@ -59,14 +61,18 @@ public class Spritesheet {
         }
     }
 
-    public static class SpritesheetReader {
+    public class SpritesheetReader {
         /*
          Reads a spritesheet from the resources directory and saves it to SpritesheetMemory.
          */
-        public static final SpritesheetMemory SpritesheetMemory = new SpritesheetMemory();
+        public final SpritesheetMemory SpritesheetMemory = new SpritesheetMemory();
+
+        public SpritesheetMemory getMemory() {
+            return SpritesheetMemory;
+        }
 
         @SuppressWarnings("UnusedReturnValue")
-        public static SpritesheetClass read(String file) {
+        public SpritesheetClass read(String file) {
             try {
                 BufferedImage image = ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource(String.format("/resources/%s", file))));
                 SpritesheetClass sprClass = new SpritesheetClass(image, file);
@@ -80,13 +86,13 @@ public class Spritesheet {
                 } catch (Exception exc1) {
                     Main.log(String.format("Unable to load fallback image 'notfound.png': %s", detailError(exc1.getMessage())));
                     Main.log("Force-stopping game");
-                    Main.stopGame();
+                    new Main().stopGame();
                 }
             }
             return null;
         }
 
-        private static String detailError(String exc) {
+        private String detailError(String exc) {
             if (exc == null) {
                 return "Spritesheet not found";
             }

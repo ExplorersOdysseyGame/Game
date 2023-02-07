@@ -18,7 +18,8 @@ public class ServerMenuScreen extends MenuScreen {
     public static final int GRID_COLUMNS = GRID_ROWS; // Window is always square, so this is GRID_ROWS
     public static ServerMenuScreen screen;
 
-    public ServerMenuScreen() {
+    public ServerMenuScreen(Main main) {
+        super(main);
         int width = GRID_SIZE * GRID_ROWS - 1;
         int height = GRID_SIZE * GRID_COLUMNS;
         setPreferredSize(new Dimension(width, height));
@@ -26,9 +27,9 @@ public class ServerMenuScreen extends MenuScreen {
         this.setLayout(null);
         screen = this;
 
-        BufferedImage IMG_host = Objects.requireNonNull(ImageReader.read("menu/host.png")).getImage();
+        BufferedImage IMG_host = Objects.requireNonNull(main.imageReader.read("menu/host.png")).getImage();
 
-        MenuButton hostButton = new MenuButton("Begin Hosting", new ImageIcon(IMG_host)) {
+        MenuButton hostButton = new MenuButton(main, "Begin Hosting", new ImageIcon(IMG_host)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));

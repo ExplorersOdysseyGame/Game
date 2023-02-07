@@ -7,16 +7,14 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static io.github.explorersodysseygame.game.Main.ImageMemory;
-
 public class Image {
 
-    public static class ImageClass {
+    public class ImageClass {
         /*
          Image class for the game, made for ImageMemory to be easily searchable.
          */
-        public static BufferedImage image;
-        public static String alias;
+        public BufferedImage image;
+        public String alias;
 
         public ImageClass(BufferedImage img, String als) {
             image = img;
@@ -46,7 +44,7 @@ public class Image {
         }
     }
 
-    public static class ImageMemory extends ArrayList<ImageClass> {
+    public class ImageMemory extends ArrayList<ImageClass> {
         /*
          Image memory for the entire game, cleared on game end.
         */
@@ -75,12 +73,17 @@ public class Image {
         }
     }
 
-    public static class ImageReader {
+    public class ImageReader {
         /*
          Reads an image from the resources directory and saves it to ImageMemory.
          */
+        public final Image.ImageMemory ImageMemory = new Image.ImageMemory();
 
-        public static ImageClass read(String file) {
+        public Image.ImageMemory getMemory() {
+            return ImageMemory;
+        }
+
+        public ImageClass read(String file) {
             try {
                 BufferedImage image = ImageIO.read(Objects.requireNonNull(ImageReader.class.getResource(String.format("/resources/%s", file))));
                 ImageClass imgClass = new ImageClass(image, file);
@@ -93,13 +96,13 @@ public class Image {
                 } catch (Exception exc1) {
                     Main.log(String.format("Unable to load fallback image 'notfound.png': %s", detailError(exc1.getMessage())));
                     Main.log("Force-stopping game");
-                    Main.stopGame();
+                    new Main().stopGame();
                 }
             }
             return null;
         }
 
-        private static String detailError(String exc) {
+        private String detailError(String exc) {
             if (exc == null) {
                 return "Image not found";
             }

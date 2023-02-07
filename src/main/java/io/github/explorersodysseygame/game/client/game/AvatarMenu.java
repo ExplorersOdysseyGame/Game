@@ -2,7 +2,6 @@ package io.github.explorersodysseygame.game.client.game;
 
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.client.Client;
-import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import io.github.explorersodysseygame.game.common.ui.PickerBar.BasicPickerBar;
 import io.github.explorersodysseygame.game.common.ui.PickerBar.RainbowPickerBar;
 import io.github.explorersodysseygame.game.common.ui.PickerBar.SkinshadePickerBar;
@@ -16,14 +15,14 @@ import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 public class AvatarMenu extends JPanel implements ActionListener {
-    public AvatarMenu(Dimension screenDimensions) {
+    public AvatarMenu(Main main, Dimension screenDimensions) {
         int width = (int) (screenDimensions.getWidth() / 8) + 32;
         int height = (int) (screenDimensions.getHeight()) - 159;
 
         setName("Avatar Menu");
 
-        BufferedImage IMG_menu = Objects.requireNonNull(ImageReader.read("menu/menu.png")).getImage();
-        BufferedImage IMG_refresh = Objects.requireNonNull(ImageReader.read("menu/reload.png")).getImage();
+        BufferedImage IMG_menu = Objects.requireNonNull(main.imageReader.read("menu/menu.png")).getImage();
+        BufferedImage IMG_refresh = Objects.requireNonNull(main.imageReader.read("menu/reload.png")).getImage();
 
         setPreferredSize(screenDimensions);
         setBounds(0, 0, screenDimensions.width, screenDimensions.height);
@@ -57,7 +56,7 @@ public class AvatarMenu extends JPanel implements ActionListener {
         picture.setLayout(null);
         picBack.add(picture);
 
-        InGameMenu.IGMButton exitButton = new InGameMenu.IGMButton("Back", new ImageIcon(IMG_menu)) {
+        InGameMenu.IGMButton exitButton = new InGameMenu.IGMButton(main, "Back", new ImageIcon(IMG_menu)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed avatar %s button", this.getText()));
@@ -76,7 +75,7 @@ public class AvatarMenu extends JPanel implements ActionListener {
             barTypes[barIndex].setBounds(5, (50*(barIndex+1))+5, (width*3)-55, 20);
             innerPanel.add(barTypes[barIndex]);
             int finalBarIndex = barIndex;
-            InGameMenu.IGMButton tempReload = new InGameMenu.IGMButton("", new ImageIcon(IMG_refresh)) {
+            InGameMenu.IGMButton tempReload = new InGameMenu.IGMButton(main, "", new ImageIcon(IMG_refresh)) {
                 @Override public void actionPerformed(ActionEvent e) {
                     Color c = barTypes[finalBarIndex].getSelectedColor();
                     c = new Color(c.getRed(), c.getGreen(), c.getBlue());

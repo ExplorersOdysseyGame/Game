@@ -6,13 +6,13 @@ public class Logger {
 
     // TODO: Allow multiple instances without changing namespace globally
 
-    private static String namespace = null;
+    private String namespace;
 
     public Logger(String nmsp) {
         namespace = nmsp;
         log(String.format("Created a new Logger under the namespace %s", namespace));
     }
-    public static void log(String msg) {
+    public void log(String msg) {
 
         Calendar now = Calendar.getInstance();
         System.out.printf("[%s/%s/%s %s:%s:%s][%s] %s%n",
@@ -27,7 +27,7 @@ public class Logger {
 
     }
 
-    public static String parseNumber(int nmb) {
+    public String parseNumber(int nmb) {
         if (nmb < 10) {
             return String.format("0%s", nmb);
         } else {

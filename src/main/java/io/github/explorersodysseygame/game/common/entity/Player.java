@@ -1,7 +1,7 @@
 package io.github.explorersodysseygame.game.common.entity;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.client.renderer.GameScreen;
+import io.github.explorersodysseygame.game.client.game.GameScreen;
 import io.github.explorersodysseygame.game.common.data.EntityData;
 import io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetReader;
 
@@ -10,8 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.ImageObserver;
 import java.util.Objects;
 
-import static io.github.explorersodysseygame.game.client.renderer.GameScreen.GRID_SIZE;
-import static io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetReader.SpritesheetMemory;
+import static io.github.explorersodysseygame.game.client.game.GameScreen.GRID_SIZE;
 
 public class Player {
 
@@ -28,6 +27,8 @@ public class Player {
     private int curTick = 0;
     private boolean canMove = true;
 
+    private final Main main;
+
     public void changeColour(Color to, String type) {
         if (Objects.equals(type, "Hair")) {hairColour = to.darker();}
         else if (Objects.equals(type, "Skin")) {skinColour = to;}
@@ -37,9 +38,10 @@ public class Player {
             Main.log("Player unable to change colour for any element, no element given");}
     }
 
-    public Player() {
+    public Player(Main main) {
+        this.main = main;
         EntityData data = new EntityData("player");
-        SpritesheetReader.read("entity/player.png");
+        main.spritesheetReader.read("entity/player.png");
         loadImage(false);
 
         pos = new Point(0, 0);
@@ -68,7 +70,7 @@ public class Player {
             }
         } else { col = 0; row = 0; }
 
-        image = SpritesheetMemory.findSheet("entity/player.png").getImage(row, col)
+        image = main.spritesheetReader.getMemory().findSheet("entity/player.png").getImage(row, col)
                 .changeColour(new Color(42, 255, 0).getRGB(), hairColour.getRGB())
                 .changeColour(new Color(255, 0, 0).getRGB(), skinColour.getRGB())
                 .changeColour(new Color(165, 0, 255).getRGB(), shirtColour.getRGB())

@@ -2,25 +2,23 @@ package io.github.explorersodysseygame.game.client;
 
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.common.menu.MenuScreen;
-import io.github.explorersodysseygame.game.client.renderer.GameScreen;
+import io.github.explorersodysseygame.game.client.game.GameScreen;
 import io.github.explorersodysseygame.game.common.Window;
 import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 
-import static io.github.explorersodysseygame.game.Main.ImageMemory;
-
 public class ClientWindow extends Window {
 
     public static JFrame window;
 
-    private static void initWindow() {
+    private static void initWindow(Main main) {
         window = new JFrame(Main.gameName);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        ImageReader.read("icon.png");
-        window.setIconImage(ImageMemory.findImage("icon.png").getImage());
+        main.imageReader.read("icon.png");
+        window.setIconImage(main.imageReader.getMemory().findImage("icon.png").getImage());
 
-        MenuScreen menu = new ClientMenuScreen();
+        MenuScreen menu = new ClientMenuScreen(main);
         window.add(menu);
         window.setSize(menu.getWidth(), menu.getHeight());
         window.addKeyListener(menu);
@@ -30,7 +28,7 @@ public class ClientWindow extends Window {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        Runtime.getRuntime().addShutdownHook(new Thread(Client::stopGame, "Shutdown-thread"));
+        Runtime.getRuntime().addShutdownHook(new Thread(new Main()::stopGame, "Shutdown-thread"));
     }
 
     public static JFrame getWindowAsJFrame() {
@@ -67,7 +65,7 @@ public class ClientWindow extends Window {
         Client.log("Loaded menu");
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(ClientWindow::initWindow);
+    public static void main(Main main, String[] args) {
+        SwingUtilities.invokeLater(() -> initWindow(main));
     }
 }

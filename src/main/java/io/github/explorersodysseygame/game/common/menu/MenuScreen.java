@@ -28,7 +28,7 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
 
     private int width;
     private int height;
-    public MenuScreen() {
+    public MenuScreen(Main main) {
         int width = GRID_SIZE * GRID_ROWS - 1;
         int height = GRID_SIZE * GRID_COLUMNS;
         Color BGCOLOUR = new Color(255, 162, 162);
@@ -37,11 +37,11 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
         setLayout(null);
         screen = this;
 
-        BufferedImage IMG_discord = Objects.requireNonNull(ImageReader.read("social/discord.png")).getImage();
-        BufferedImage IMG_reddit = Objects.requireNonNull(ImageReader.read("social/reddit.png")).getImage();
-        BufferedImage IMG_quit = Objects.requireNonNull(ImageReader.read("menu/quit.png")).getImage();
+        BufferedImage IMG_discord = Objects.requireNonNull(main.imageReader.read("social/discord.png")).getImage();
+        BufferedImage IMG_reddit = Objects.requireNonNull(main.imageReader.read("social/reddit.png")).getImage();
+        BufferedImage IMG_quit = Objects.requireNonNull(main.imageReader.read("menu/quit.png")).getImage();
 
-        MenuButton discordSocial = new MenuButton("", new ImageIcon(IMG_discord)) {
+        MenuButton discordSocial = new MenuButton(main, "", new ImageIcon(IMG_discord)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log("Pressed Discord menu button");
@@ -57,7 +57,7 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
         discordSocial.setBounds((width/2)+5,height-37,32,32);
         add(discordSocial);
 
-        MenuButton redditSocial = new MenuButton("", new ImageIcon(IMG_reddit)) {
+        MenuButton redditSocial = new MenuButton(main, "", new ImageIcon(IMG_reddit)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log("Pressed Reddit menu button");
@@ -73,12 +73,12 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
         redditSocial.setBounds((width/2)-37,height-37,32,32);
         add(redditSocial);
 
-        MenuButton quitButton = new MenuButton("Quit", new ImageIcon(IMG_quit)) {
+        MenuButton quitButton = new MenuButton(main, "Quit", new ImageIcon(IMG_quit)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));
                 ClientWindow.loadGame(ClientWindow.getWindowAsJFrame(), ClientMenuScreen.getScreen());
-                Main.stopGame();
+                new Main().stopGame();
                 System.exit(0);
             }
         };

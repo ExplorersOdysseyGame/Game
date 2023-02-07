@@ -18,7 +18,8 @@ public class ClientMenuScreen extends MenuScreen {
     public static final int GRID_COLUMNS = GRID_ROWS; // Window is always square, so this is GRID_ROWS
     public static ClientMenuScreen screen;
 
-    public ClientMenuScreen() {
+    public ClientMenuScreen(Main main) {
+        super(main);
         int width = GRID_SIZE * GRID_ROWS - 1;
         int height = GRID_SIZE * GRID_COLUMNS;
         setPreferredSize(new Dimension(width, height));
@@ -26,9 +27,9 @@ public class ClientMenuScreen extends MenuScreen {
         this.setLayout(null);
         screen = this;
 
-        BufferedImage IMG_play = Objects.requireNonNull(ImageReader.read("menu/play.png")).getImage();
+        BufferedImage IMG_play = Objects.requireNonNull(main.imageReader.read("menu/play.png")).getImage();
 
-        MenuButton playButton = new MenuButton("Play", new ImageIcon(IMG_play)) {
+        MenuButton playButton = new MenuButton(main, "Play", new ImageIcon(IMG_play)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));

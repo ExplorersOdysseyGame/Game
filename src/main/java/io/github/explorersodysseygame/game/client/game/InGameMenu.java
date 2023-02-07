@@ -2,7 +2,6 @@ package io.github.explorersodysseygame.game.client.game;
 
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.client.ClientWindow;
-import io.github.explorersodysseygame.game.client.renderer.GameScreen;
 import io.github.explorersodysseygame.game.common.menu.MenuButton;
 import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
@@ -19,8 +18,8 @@ public class InGameMenu extends JPanel implements ActionListener {
     protected static JPanel outerPanel;
 
     static class IGMButton extends MenuButton {
-        public IGMButton(String text, Icon icon) {
-            super("Menu", icon);
+        public IGMButton(Main main, String text, Icon icon) {
+            super(main, "Menu", icon);
             this.setText(text);
             this.setIcon(icon);
             this.setBackground(new Color(89, 182, 89));
@@ -33,8 +32,8 @@ public class InGameMenu extends JPanel implements ActionListener {
             ui.setSelectColor(this.getBackground().darker());
             this.setUI(ui);
         }
-        public IGMButton(String text) {
-            super("Menu");
+        public IGMButton(Main main, String text) {
+            super(main, "Menu");
             this.setText(text);
             this.setBackground(new Color(89, 182, 89));
             this.addActionListener(this);
@@ -48,8 +47,8 @@ public class InGameMenu extends JPanel implements ActionListener {
         }
     }
 
-    public InGameMenu(Dimension screenDimensions) {
-        avatarMenu = new AvatarMenu(screenDimensions);
+    public InGameMenu(Main main, Dimension screenDimensions) {
+        avatarMenu = new AvatarMenu(main, screenDimensions);
         int width = (int) (screenDimensions.getWidth() / 2) + 32;
         int height = (int) (screenDimensions.getHeight()) - 159;
 
@@ -76,11 +75,11 @@ public class InGameMenu extends JPanel implements ActionListener {
         innerPanel.setLayout(null);
         outerPanel.add(innerPanel);
 
-        BufferedImage IMG_menu = Objects.requireNonNull(ImageReader.read("menu/menu.png")).getImage();
-        BufferedImage IMG_pause = Objects.requireNonNull(ImageReader.read("menu/pause.png")).getImage();
-        BufferedImage IMG_avatar = Objects.requireNonNull(ImageReader.read("menu/avatar.png")).getImage();
+        BufferedImage IMG_menu = Objects.requireNonNull(main.imageReader.read("menu/menu.png")).getImage();
+        BufferedImage IMG_pause = Objects.requireNonNull(main.imageReader.read("menu/pause.png")).getImage();
+        BufferedImage IMG_avatar = Objects.requireNonNull(main.imageReader.read("menu/avatar.png")).getImage();
 
-        IGMButton pauseIndicator = new IGMButton("", new ImageIcon(IMG_pause.getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
+        IGMButton pauseIndicator = new IGMButton(main, "", new ImageIcon(IMG_pause.getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
         pauseIndicator.setName("Pause Indicator");
         pauseIndicator.setBackground(new Color(25, 25, 25));
         pauseIndicator.setBounds((screenDimensions.width/2)-20,16, 32, 32);
@@ -89,7 +88,7 @@ public class InGameMenu extends JPanel implements ActionListener {
         pauseIndicator.setUI(pauseIndicatorUI);
         add(pauseIndicator);
 
-        IGMButton menuButton = new IGMButton("Menu", new ImageIcon(IMG_menu)) {
+        IGMButton menuButton = new IGMButton(main, "Menu", new ImageIcon(IMG_menu)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed in-game %s button", this.getText()));
@@ -100,7 +99,7 @@ public class InGameMenu extends JPanel implements ActionListener {
         menuButton.setBackground(new Color(75, 75, 75));
         innerPanel.add(menuButton);
 
-        IGMButton avatarButton = new IGMButton("Avatar", new ImageIcon(IMG_avatar)) {
+        IGMButton avatarButton = new IGMButton(main, "Avatar", new ImageIcon(IMG_avatar)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed in-game %s button", this.getText()));

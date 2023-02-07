@@ -8,8 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
-
-import static io.github.explorersodysseygame.game.Main.ImageMemory;
 public class MenuButton extends JButton implements ActionListener {
 
     public static class MenuButtonSelectedUI extends BasicButtonUI {
@@ -33,13 +31,13 @@ public class MenuButton extends JButton implements ActionListener {
             }
         }
     }
-    public MenuButton(String text, Icon icon) {
+    public MenuButton(Main main, String text, Icon icon) {
         this.setText(text);
         try {
             this.setIcon(icon);
         } catch (Exception exc) {
             Main.log(String.format("Failure loading a menu button icon: %s", exc.getMessage()));
-            this.setIcon(new ImageIcon(ImageMemory.findImage("notfound.png").getImage()));
+            this.setIcon(new ImageIcon(main.imageReader.getMemory().findImage("notfound.png").getImage()));
         }
         this.setBackground(new Color(222, 129, 129));
         this.addActionListener(this);
@@ -50,9 +48,9 @@ public class MenuButton extends JButton implements ActionListener {
         ui.setSelectColor(this.getBackground().darker());
         this.setUI(ui);
     }
-    public MenuButton(String text) {
+    public MenuButton(Main main, String text) {
         this.setText(text);
-        this.setIcon(new ImageIcon(ImageMemory.findImage("notfound.png").getImage()));
+        this.setIcon(new ImageIcon(main.imageReader.getMemory().findImage("notfound.png").getImage()));
         this.setBackground(new Color(222, 129, 129));
         this.addActionListener(this);
         this.setForeground(new Color(255, 255, 255));

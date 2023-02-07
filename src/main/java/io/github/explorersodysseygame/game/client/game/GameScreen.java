@@ -1,7 +1,9 @@
-package io.github.explorersodysseygame.game.client.renderer;
+package io.github.explorersodysseygame.game.client.game;
 
-import io.github.explorersodysseygame.game.client.game.InGameMenu;
+import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.common.entity.Player;
+import io.github.explorersodysseygame.game.common.util.Image.*;
+import io.github.explorersodysseygame.game.common.util.Spritesheet.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,22 +11,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Random;
 
 public class GameScreen extends JPanel implements ActionListener, KeyListener {
     public static final int GRID_SIZE = 20; // Pixel size of each square on the game grid.
     public static final int GRID_ROWS = 24; // Amount to multiply GRID_SIZE by for width.
     public static final int GRID_COLUMNS = GRID_ROWS; // Window is always square, so this is GRID_ROWS
-    public static final Player player = new Player();
+    public static Player player;
 
     private final InGameMenu inGameMenu;
     private static GameScreen screen;
 
+    private static final ArrayList<int[]> chunkDecorationPositions = new ArrayList<>();
+    private static final ArrayList<ImageClass> chunkDecorationImages = new ArrayList<>();
+
     private final int width;
     private final int height;
-    public GameScreen() {
+    public GameScreen(Main main) {
+        player = new Player(main);
         width = (GRID_SIZE * GRID_ROWS + GRID_SIZE) - 4;
         height = (GRID_SIZE * GRID_COLUMNS + (GRID_SIZE * 2)) - 1;
-        inGameMenu = new InGameMenu(new Dimension(width, height));
+        inGameMenu = new InGameMenu(main, new Dimension(width, height));
         add(inGameMenu);
         setPreferredSize(new Dimension(width, height));
         setVisible(false);
@@ -35,6 +44,17 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
         Timer timer = new Timer(TPS, this);
         timer.start();
         screen = this;
+
+        SpritesheetClass cDSheet = main.spritesheetReader.read("entity/player.png");
+        for (int row = 0; row < GRID_ROWS; row++) {
+            for (int col = 0; col < GRID_COLUMNS; col++) {
+                Random rand = new Random();
+                if (rand.nextInt(8) == 4) {
+                    chunkDecorationPositions.add(new int[]{row * GRID_SIZE, col * GRID_SIZE});
+                    chunkDecorationImages.add(cDSheet.getImage(rand.nextInt(cDSheet.getRows()),rand.nextInt(cDSheet.getCols())));
+                }
+            }
+        }
     }
 
     public static GameScreen getScreen() {
@@ -76,19 +96,11 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
 
     }
     private void drawBackground(Graphics g) {
-        // draw a checkered background
         g.setColor(new Color(81, 128, 81));
-        for (int row = 0; row < GRID_ROWS; row++) {
-            for (int col = 0; col < GRID_COLUMNS; col++) {
-                if ((row + col) % 2 == 1) {
-                    g.fillRect(
-                            col * GRID_SIZE,
-                            row * GRID_SIZE,
-                            GRID_SIZE,
-                            GRID_SIZE
-                    );
-                }
-            }
+        int iter = 0;
+        for (int[] pos : chunkDecorationPositions) {
+            g.drawImage(chunkDecorationImages.get(iter).getImage().getScaledInstance(GRID_SIZE, GRID_SIZE, Image.SCALE_FAST), pos[0], pos[1], new Color(162, 255, 162), null);
+            iter += 1;
         }
     }
 

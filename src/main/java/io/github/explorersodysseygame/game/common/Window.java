@@ -1,20 +1,17 @@
 package io.github.explorersodysseygame.game.common;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
-
-import static io.github.explorersodysseygame.game.Main.ImageMemory;
 
 public class Window {
     public static JFrame window;
 
-    private static void initWindow() {
+    private static void initWindow(Main main) {
         window = new JFrame(Main.gameName);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        ImageReader.read("icon.png");
-        window.setIconImage(ImageMemory.findImage("icon.png").getImage());
+        main.imageReader.read("icon.png");
+        window.setIconImage(main.imageReader.getMemory().findImage("icon.png").getImage());
 
         window.setSize(256, 384);
         window.setResizable(false);
@@ -22,14 +19,14 @@ public class Window {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        Runtime.getRuntime().addShutdownHook(new Thread(Main::stopGame, "Shutdown-thread"));
+        Runtime.getRuntime().addShutdownHook(new Thread(new Main()::stopGame, "Shutdown-thread"));
     }
 
     public static JFrame getWindowAsJFrame() {
         return window;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(Window::initWindow);
+    public static void main(Main main, String[] args) {
+        SwingUtilities.invokeLater(() -> initWindow(main));
     }
 }
