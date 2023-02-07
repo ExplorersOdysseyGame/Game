@@ -3,7 +3,6 @@ package io.github.explorersodysseygame.game.common.entity;
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.client.game.GameScreen;
 import io.github.explorersodysseygame.game.common.data.EntityData;
-import io.github.explorersodysseygame.game.common.util.Spritesheet.SpritesheetReader;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -41,7 +40,7 @@ public class Player {
     public Player(Main main) {
         this.main = main;
         EntityData data = new EntityData("player");
-        main.spritesheetReader.read("entity/player.png");
+        main.spritesheetReader.read("game/entity/player.png");
         loadImage(false);
 
         pos = new Point(0, 0);
@@ -70,7 +69,7 @@ public class Player {
             }
         } else { col = 0; row = 0; }
 
-        image = main.spritesheetReader.getMemory().findSheet("entity/player.png").getImage(row, col)
+        image = main.spritesheetReader.getMemory().findSheet("game/entity/player.png").getImage(row, col)
                 .changeColour(new Color(42, 255, 0).getRGB(), hairColour.getRGB())
                 .changeColour(new Color(255, 0, 0).getRGB(), skinColour.getRGB())
                 .changeColour(new Color(165, 0, 255).getRGB(), shirtColour.getRGB())

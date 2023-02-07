@@ -3,7 +3,6 @@ package io.github.explorersodysseygame.game.client.game;
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.client.ClientWindow;
 import io.github.explorersodysseygame.game.common.menu.MenuButton;
-import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -75,9 +74,9 @@ public class InGameMenu extends JPanel implements ActionListener {
         innerPanel.setLayout(null);
         outerPanel.add(innerPanel);
 
-        BufferedImage IMG_menu = Objects.requireNonNull(main.imageReader.read("menu/menu.png")).getImage();
-        BufferedImage IMG_pause = Objects.requireNonNull(main.imageReader.read("menu/pause.png")).getImage();
-        BufferedImage IMG_avatar = Objects.requireNonNull(main.imageReader.read("menu/avatar.png")).getImage();
+        BufferedImage IMG_menu = Objects.requireNonNull(main.imageReader.read("game/menu/menu.png")).getImage();
+        BufferedImage IMG_pause = Objects.requireNonNull(main.imageReader.read("game/menu/pause.png")).getImage();
+        BufferedImage IMG_avatar = Objects.requireNonNull(main.imageReader.read("game/menu/avatar.png")).getImage();
 
         IGMButton pauseIndicator = new IGMButton(main, "", new ImageIcon(IMG_pause.getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
         pauseIndicator.setName("Pause Indicator");

@@ -3,7 +3,6 @@ package io.github.explorersodysseygame.game.server;
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.common.Window;
 import io.github.explorersodysseygame.game.common.menu.MenuScreen;
-import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 
@@ -14,8 +13,8 @@ public class ServerWindow extends Window {
     private void initWindow(Main main) {
         window = new JFrame(Main.gameName);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        main.imageReader.read("icon.png");
-        window.setIconImage(main.imageReader.getMemory().findImage("icon.png").getImage());
+        main.imageReader.read("misc/icon.png");
+        window.setIconImage(main.imageReader.getMemory().findImage("misc/icon.png").getImage());
 
         MenuScreen menu = new ServerMenuScreen(main);
         window.add(menu);

@@ -3,7 +3,6 @@ package io.github.explorersodysseygame.game.server;
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.common.menu.MenuButton;
 import io.github.explorersodysseygame.game.common.menu.MenuScreen;
-import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +26,7 @@ public class ServerMenuScreen extends MenuScreen {
         this.setLayout(null);
         screen = this;
 
-        BufferedImage IMG_host = Objects.requireNonNull(main.imageReader.read("menu/host.png")).getImage();
+        BufferedImage IMG_host = Objects.requireNonNull(main.imageReader.read("game/menu/host.png")).getImage();
 
         MenuButton hostButton = new MenuButton(main, "Begin Hosting", new ImageIcon(IMG_host)) {
             @Override

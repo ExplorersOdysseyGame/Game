@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 
 public class GameScreen extends JPanel implements ActionListener, KeyListener {
@@ -45,7 +44,7 @@ public class GameScreen extends JPanel implements ActionListener, KeyListener {
         timer.start();
         screen = this;
 
-        SpritesheetClass cDSheet = main.spritesheetReader.read("entity/player.png");
+        SpritesheetClass cDSheet = main.spritesheetReader.read("game/entity/player.png");
         for (int row = 0; row < GRID_ROWS; row++) {
             for (int col = 0; col < GRID_COLUMNS; col++) {
                 Random rand = new Random();

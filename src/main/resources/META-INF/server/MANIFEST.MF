@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: io.github.explorersodysseygame.game.server.Server
+Class-Path: io.github.explorersodysseygame.game.server.Server
+

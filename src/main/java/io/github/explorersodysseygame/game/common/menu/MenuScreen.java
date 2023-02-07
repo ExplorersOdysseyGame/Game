@@ -3,7 +3,6 @@ package io.github.explorersodysseygame.game.common.menu;
 import io.github.explorersodysseygame.game.Main;
 import io.github.explorersodysseygame.game.client.ClientMenuScreen;
 import io.github.explorersodysseygame.game.client.ClientWindow;
-import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,9 +36,9 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
         setLayout(null);
         screen = this;
 
-        BufferedImage IMG_discord = Objects.requireNonNull(main.imageReader.read("social/discord.png")).getImage();
-        BufferedImage IMG_reddit = Objects.requireNonNull(main.imageReader.read("social/reddit.png")).getImage();
-        BufferedImage IMG_quit = Objects.requireNonNull(main.imageReader.read("menu/quit.png")).getImage();
+        BufferedImage IMG_discord = Objects.requireNonNull(main.imageReader.read("game/social/discord.png")).getImage();
+        BufferedImage IMG_reddit = Objects.requireNonNull(main.imageReader.read("game/social/reddit.png")).getImage();
+        BufferedImage IMG_quit = Objects.requireNonNull(main.imageReader.read("game/menu/quit.png")).getImage();
 
         MenuButton discordSocial = new MenuButton(main, "", new ImageIcon(IMG_discord)) {
             @Override

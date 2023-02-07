@@ -5,7 +5,6 @@ import io.github.explorersodysseygame.game.client.Client;
 import io.github.explorersodysseygame.game.common.ui.PickerBar.BasicPickerBar;
 import io.github.explorersodysseygame.game.common.ui.PickerBar.RainbowPickerBar;
 import io.github.explorersodysseygame.game.common.ui.PickerBar.SkinshadePickerBar;
-import io.github.explorersodysseygame.game.common.util.Image.ImageReader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +20,8 @@ public class AvatarMenu extends JPanel implements ActionListener {
 
         setName("Avatar Menu");
 
-        BufferedImage IMG_menu = Objects.requireNonNull(main.imageReader.read("menu/menu.png")).getImage();
-        BufferedImage IMG_refresh = Objects.requireNonNull(main.imageReader.read("menu/reload.png")).getImage();
+        BufferedImage IMG_menu = Objects.requireNonNull(main.imageReader.read("game/menu/menu.png")).getImage();
+        BufferedImage IMG_refresh = Objects.requireNonNull(main.imageReader.read("game/menu/reload.png")).getImage();
 
         setPreferredSize(screenDimensions);
         setBounds(0, 0, screenDimensions.width, screenDimensions.height);
