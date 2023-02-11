@@ -76,7 +76,6 @@ public class MenuScreen extends JPanel implements ActionListener, KeyListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));
-                ClientWindow.loadGame(ClientWindow.getWindowAsJFrame(), ClientMenuScreen.getScreen());
                 new Main().stopGame();
                 System.exit(0);
             }

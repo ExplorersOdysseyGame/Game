@@ -28,17 +28,26 @@ public class ClientMenuScreen extends MenuScreen {
 
         BufferedImage IMG_play = Objects.requireNonNull(main.imageReader.read("game/menu/play.png")).getImage();
 
-        MenuButton playButton = new MenuButton(main, "Play", new ImageIcon(IMG_play)) {
+        MenuButton singleplayerButton = new MenuButton(main, "Play Singleplayer", new ImageIcon(IMG_play)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed %s menu button", this.getText()));
-                ClientWindow.loadGame(ClientWindow.getWindowAsJFrame(), ClientMenuScreen.getScreen());
+                ClientWindow.loadSingleplayerGame(ClientWindow.getWindowAsJFrame(), ClientMenuScreen.getScreen());
 
             }
         };
-        playButton.setBounds(GRID_SIZE * (GRID_ROWS/3), GRID_SIZE * 3, GRID_SIZE * (GRID_ROWS / 3), GRID_SIZE);
+        singleplayerButton.setBounds(GRID_SIZE * (GRID_ROWS/3), GRID_SIZE * 3, GRID_SIZE * (GRID_ROWS / 3), GRID_SIZE);
+        this.add(singleplayerButton);
+        MenuButton multiplayerButton = new MenuButton(main, "Play Multiplayer", new ImageIcon(IMG_play)) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.log(String.format("Pressed %s menu button", this.getText()));
+                ClientWindow.loadMultiplayerGame(ClientWindow.getWindowAsJFrame(), ClientMenuScreen.getScreen());
 
-        this.add(playButton);
+            }
+        };
+        multiplayerButton.setBounds(GRID_SIZE * (GRID_ROWS/3), GRID_SIZE * 5, GRID_SIZE * (GRID_ROWS / 3), GRID_SIZE);
+        this.add(multiplayerButton);
     }
 
     public static ClientMenuScreen getScreen() {
