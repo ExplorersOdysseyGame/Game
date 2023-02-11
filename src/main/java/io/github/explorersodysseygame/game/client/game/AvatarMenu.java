@@ -1,10 +1,7 @@
 package io.github.explorersodysseygame.game.client.game;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.client.Client;
-import io.github.explorersodysseygame.game.common.ui.PickerBar.BasicPickerBar;
-import io.github.explorersodysseygame.game.common.ui.PickerBar.RainbowPickerBar;
-import io.github.explorersodysseygame.game.common.ui.PickerBar.SkinshadePickerBar;
+import io.github.explorersodysseygame.game.common.ui.PickerBar.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,34 +63,36 @@ public class AvatarMenu extends JPanel implements ActionListener {
         exitButton.setBackground(new Color(75, 75, 75));
         innerPanel.add(exitButton);
 
-        String[] barNames = {"Hair", "Skin", "Shirt", "Shoe"};
-        JLabel[] barTitles = {new JLabel(), new JLabel(), new JLabel(), new JLabel()};
-        BasicPickerBar[] barTypes = {new RainbowPickerBar(), new SkinshadePickerBar(), new RainbowPickerBar(), new RainbowPickerBar()};
+        String[] sectionNames = {"Hair Customisation", "Skin Customisation", "Shirt Customisation", "Shoe Customisation", "Presets"};
+        JLabel[] barTitles = {new JLabel(), new JLabel(), new JLabel(), new JLabel(), new JLabel()};
+        BasicPickerBar[] barTypes = {new AdvancedPickerBar(), new SkinshadePickerBar(), new RainbowPickerBar(), new AdvancedPickerBar(), null};
         int barIndex = 0;
-        for (String barName : barNames) {
-            barTypes[barIndex].setBounds(5, (50*(barIndex+1))+5, (width*3)-55, 20);
-            innerPanel.add(barTypes[barIndex]);
-            int finalBarIndex = barIndex;
-            InGameMenu.IGMButton tempReload = new InGameMenu.IGMButton(main, "", new ImageIcon(IMG_refresh)) {
-                @Override public void actionPerformed(ActionEvent e) {
-                    Color c = barTypes[finalBarIndex].getSelectedColor();
-                    c = new Color(c.getRed(), c.getGreen(), c.getBlue());
-                    GameScreen.player.changeColour(c, barName);
-                    GameScreen.player.getEntity().updateImage();
-                    picture.setIcon(new ImageIcon(GameScreen.player.getEntity().getImage().getScaledInstance(width, width, Image.SCALE_FAST)));
-                }
-            };
-            tempReload.setBounds(barTypes[barIndex].getWidth()+10, (50*(barIndex+1))+5, 20, 20);
-            tempReload.setBackground(new Color(75, 75, 75));
-            innerPanel.add(tempReload);
-            barTitles[barIndex].setText(String.format("%s Customisation", barName));
-            barTitles[barIndex].setBounds(5, barTypes[barIndex].getY()-25, (width*3-55), 20);
+        for (String sectionName : sectionNames) {
+            barTitles[barIndex].setText(String.format("%s", sectionName));
+            barTitles[barIndex].setBounds(5, (50 * (barIndex + 1)) - 20, (width*3-55), 20);
             barTitles[barIndex].setForeground(new Color(255, 255, 255));
             innerPanel.add(barTitles[barIndex]);
-            Client.log(String.format("Added tempReload, tempTitle, colourBar for %s", barName));
-            Client.log(String.valueOf(barTitles[barIndex].getLocation()));
-            barIndex += 1;
+            if (barTypes[barIndex] != null) {
+                barTypes[barIndex].setBounds(5, barTitles[barIndex].getY()+25, (width * 3) - 55, 20);
+                innerPanel.add(barTypes[barIndex]);
+                int finalBarIndex = barIndex;
+                InGameMenu.IGMButton tempReload = new InGameMenu.IGMButton(main, "", new ImageIcon(IMG_refresh)) {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Color c = barTypes[finalBarIndex].getSelectedColor();
+                        c = new Color(c.getRed(), c.getGreen(), c.getBlue());
+                        GameScreen.player.changeColour(c, sectionName.split(" ")[0]);
+                        GameScreen.player.getEntity().updateImage();
+                        picture.setIcon(new ImageIcon(GameScreen.player.getEntity().getImage().getScaledInstance(width, width, Image.SCALE_FAST)));
+                    }
+                };
+                tempReload.setBounds(barTypes[barIndex].getWidth() + 10, (50 * (barIndex + 1)) + 5, 20, 20);
+                tempReload.setBackground(new Color(75, 75, 75));
+                innerPanel.add(tempReload);
+                barIndex += 1;
+            }
         }
+        // TODO: Presets section :)
     }
 
     @Override

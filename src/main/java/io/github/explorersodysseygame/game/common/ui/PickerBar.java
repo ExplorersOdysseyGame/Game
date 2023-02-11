@@ -112,4 +112,25 @@ public class PickerBar {
             g2d.fillRect(0, 0, getWidth(), getHeight());
         };
     }
+
+    public static class AdvancedPickerBar extends BasicPickerBar {
+        public AdvancedPickerBar() {
+            super();
+        }
+        @Override
+        protected void paintComponent(Graphics graphics) {
+            super.paintComponent(graphics);
+            Graphics2D g2d = (Graphics2D) graphics;
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                    RenderingHints.VALUE_ANTIALIAS_ON);
+            Point2D start = new Point2D.Float(0, 0);
+            Point2D end = new Point2D.Float(getWidth(), 0);
+            float[] dist = {0f, .1f, .2f, .3f, .4f, .5f, .6f, .8f, .9f, 1f};
+            Color[] colors = {Color.BLACK, Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA, Color.RED, Color.WHITE};
+            LinearGradientPaint gp =
+                    new LinearGradientPaint(start, end, dist, colors);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, getWidth(), getHeight());
+        };
+    }
 }
