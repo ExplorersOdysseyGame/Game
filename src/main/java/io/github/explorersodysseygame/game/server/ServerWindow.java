@@ -35,6 +35,8 @@ public class ServerWindow extends Window {
 
     public static void loadGame(JFrame window, MenuScreen menu) {
         // TODO: Server game loading
+        //  This will have the server begin listening on a port and IP or localhost depending on user option.
+        //  Before doing this, the Client must have a multiplayer connection option.
     }
 
     public static void main(Main main, String[] args) {

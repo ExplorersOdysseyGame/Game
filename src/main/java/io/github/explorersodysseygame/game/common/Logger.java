@@ -4,8 +4,6 @@ import java.util.Calendar;
 
 public class Logger {
 
-    // TODO: Allow multiple instances without changing namespace globally
-
     private final String namespace;
 
     public Logger(String nmsp) {
