@@ -14,10 +14,10 @@ public class Player {
     private Image image;
 
     protected String lastDir; // NESW
-    private Color hairColour = new Color(126, 70, 3);
-    private Color skinColour = new Color(222, 169, 107);
-    private Color shirtColour = new Color(134, 0, 95);
-    private Color shoeColour = new Color(26, 26, 26);
+    private Color hairColour = new Color(178, 98, 0);
+    private Color skinColour = new Color(227, 179, 141);
+    private Color shirtColour = new Color(0, 255, 93);
+    private Color shoeColour = new Color(0, 0, 0);
 
     private final ArrayList<Color[]> switchedColours = new ArrayList<>();
 

@@ -1,13 +1,20 @@
 package io.github.explorersodysseygame.game.client.game;
 
 import io.github.explorersodysseygame.game.Main;
+import io.github.explorersodysseygame.game.client.Client;
+import io.github.explorersodysseygame.game.common.entity.Player;
 import io.github.explorersodysseygame.game.common.ui.PickerBar.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class AvatarMenu extends JPanel implements ActionListener {
@@ -89,12 +96,85 @@ public class AvatarMenu extends JPanel implements ActionListener {
                 tempReload.setBounds(barTypes[barIndex].getWidth() + 10, (50 * (barIndex + 1)) + 5, 20, 20);
                 tempReload.setBackground(new Color(75, 75, 75));
                 innerPanel.add(tempReload);
-                barIndex += 1;
             }
+            barIndex += 1;
         }
-        // TODO: Presets section :)
+
+        new AvatarPreset("John", new Color(178, 98, 0), new Color(227, 179, 141), new Color(0, 255, 93), new Color(0, 0, 0));
+        new AvatarPreset("Alex", new Color(178, 62, 0), new Color(188, 141, 87), new Color(102, 0, 255), new Color(0, 0, 0));
+        AvatarPreset[] presets = AvatarPreset.definedPresets;
+        JPanel presetWindow = new JPanel();
+        presetWindow.setBackground(new Color(75, 75, 75));
+        presetWindow.setBounds(5, (50 * (barTitles.length)), (width*3-30), height-(50 * (barTitles.length + 1))+25);
+        presetWindow.setLayout(null);
+        innerPanel.add(presetWindow);
+        JScrollPane presetScroll = new JScrollPane(presetWindow);
+        presetScroll.setBounds(presetWindow.getBounds());
+        presetWindow.setPreferredSize(new Dimension(70*presets.length, presetWindow.getHeight()));
+        presetScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        presetScroll.setBorder(new EmptyBorder(0,0,0,0));
+        presetScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        innerPanel.add(presetScroll);
+        int presetIndex = 0;
+        for (AvatarPreset preset : presets) {
+            JPanel presetFrame = new JPanel();
+            presetFrame.setBackground(new Color(90, 90, 90));
+            int size = presetWindow.getHeight()-25;
+            presetFrame.setBounds(5+(presetIndex*size)+5*presetIndex, 5, size, size);
+            presetWindow.add(presetFrame);
+            Player presetPlayer = new Player(main);
+            presetPlayer.changeColour(preset.getHairColour(), "Hair");presetPlayer.changeColour(preset.getSkinColour(), "Skin");presetPlayer.changeColour(preset.getShirtColour(), "Shirt");presetPlayer.changeColour(preset.getShoeColour(), "Shoe");
+            presetPlayer.updateSwitchedColours();presetPlayer.getEntity().updateImage();
+            JLabel presetPic = new JLabel(new ImageIcon(presetPlayer.getEntity().getImage().getScaledInstance(presetFrame.getWidth()-10, presetFrame.getWidth()-10, Image.SCALE_FAST)));
+            presetPic.setBackground(new Color(105, 105, 105));
+            presetPic.setBounds(5, 5, presetFrame.getWidth()-10, presetFrame.getWidth()-5);
+            presetPic.setLayout(null);
+            presetPic.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    GameScreen.player.changeColour(preset.getHairColour(), "Hair");
+                    GameScreen.player.changeColour(preset.getSkinColour(), "Skin");
+                    GameScreen.player.changeColour(preset.getShirtColour(), "Shirt");
+                    GameScreen.player.changeColour(preset.getShoeColour(), "Shoe");
+                    GameScreen.player.updateSwitchedColours();GameScreen.player.getEntity().updateImage();
+                    picture.setIcon(new ImageIcon(GameScreen.player.getEntity().getImage().getScaledInstance(width, width, Image.SCALE_FAST)));
+                }
+
+                @Override public void mousePressed(MouseEvent e) {}
+                @Override public void mouseReleased(MouseEvent e) {}
+                @Override public void mouseEntered(MouseEvent e) {}
+                @Override public void mouseExited(MouseEvent e) {}
+            });
+            presetFrame.add(presetPic);
+            presetIndex += 1;
+        }
     }
 
+    static class AvatarPreset {
+        public static AvatarPreset[] definedPresets = new AvatarPreset[0];
+
+        private Color hairColour;
+        private Color skinColour;
+        private Color shirtColour;
+        private Color shoeColour;
+
+        AvatarPreset(String presetName, Color hairColour, Color skinColour, Color shirtColour, Color shoeColour) {
+            this.hairColour = hairColour;
+            this.skinColour = skinColour;
+            this.shirtColour = shirtColour;
+            this.shoeColour = shoeColour;
+            ArrayList<AvatarPreset> ndfp = new ArrayList<>();
+            if (definedPresets.length != 0) {ndfp.addAll(Arrays.asList(definedPresets));}
+            ndfp.add(this);definedPresets = ndfp.toArray(new AvatarPreset[definedPresets.length+1]);
+        }
+
+        public Color getHairColour() {return hairColour;}
+        public Color getShirtColour() {return shirtColour;}
+
+        public Color getShoeColour() {return shoeColour;}
+        public Color getSkinColour() {return skinColour;}
+        public Color[] getColourData() {return new Color[]{hairColour, skinColour, shirtColour, shoeColour};}
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
