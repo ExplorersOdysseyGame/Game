@@ -14,6 +14,7 @@ jobs:
           distribution: 'temurin'
       - name: Search for TODOs to convert to Issue
         uses: ribtoks/tdg-github-action@master
+        if: github.ref == 'refs/heads/master'
         with:
           TOKEN: ${{ secrets.EXPODDEV_TOKEN }}
           REPO: ${{ github.repository }}
