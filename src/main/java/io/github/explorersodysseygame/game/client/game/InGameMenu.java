@@ -87,7 +87,7 @@ public class InGameMenu extends JPanel implements ActionListener {
         pauseIndicator.setUI(pauseIndicatorUI);
         add(pauseIndicator);
 
-        IGMButton menuButton = new IGMButton(main, "Menu", new ImageIcon(IMG_menu)) {
+        IGMButton menuButton = new IGMButton(main, "Exit to Main Menu", new ImageIcon(IMG_menu)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.log(String.format("Pressed in-game %s button", this.getText()));

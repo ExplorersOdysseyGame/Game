@@ -9,87 +9,98 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class Popup extends JFrame {
+public class Popup {
 
-    public boolean hasResponded = false;
-    private boolean hasDrawnPopup = false;
+    public static class TwoEntryPopup extends JFrame {
 
-    private final String entryOneName;
-    private final String entryTwoName;
-    private Runnable onResponse;
+        public boolean hasResponded = false;
+        private boolean hasDrawnPopup = false;
 
-    private String entryOneResponse;
-    private String entryTwoResponse;
+        private final String entryOneName;
+        private final String entryTwoName;
+        private Runnable onResponse;
+
+        private String entryOneResponse;
+        private String entryTwoResponse;
 
 
-    public String[] responses;
+        public String[] responses;
 
-    public void setOnResponse(Runnable onResponse1) {
-        onResponse = onResponse1;
-    }
-
-    public Popup(String popupName, String entryOneName, String entryTwoName) {
-        super(popupName);
-        this.entryOneName = entryOneName;this.entryTwoName = entryTwoName;
-        setAlwaysOnTop(true);
-        try {
-            setIconImage(ImageIO.read(new File("resources/misc/icon.png")));
-        } catch (Exception e) {
-            setIconImage(null);
+        public void setOnResponse(Runnable onResponse1) {
+            onResponse = onResponse1;
         }
-        int width = 425;int height = 151;
-        setMaximizedBounds(new Rectangle(width, height));
-        setMinimumSize(new Dimension(width, height));
-        setLayout(null);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        tick();
+        public TwoEntryPopup(String popupName, String entryOneName, String entryTwoName) {
+            super(popupName);
+            this.entryOneName = entryOneName;
+            this.entryTwoName = entryTwoName;
+            setAlwaysOnTop(true);
+            try {
+                setIconImage(ImageIO.read(new File("resources/misc/icon.png")));
+            } catch (Exception e) {
+                setIconImage(null);
+            }
+            int width = 425;
+            int height = 151;
+            setMaximizedBounds(new Rectangle(width, height));
+            setMinimumSize(new Dimension(width, height));
+            setLayout(null);
+            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        setSize(width, height);
-        setResizable(false);
-        pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
+            tick();
 
-        Runtime.getRuntime().addShutdownHook(new Thread(this::close, "Shutdown-thread"));
-    }
+            setSize(width, height);
+            setResizable(false);
+            pack();
+            setLocationRelativeTo(null);
+            setVisible(true);
 
-    public void close() {
-        responses = new String[]{entryOneResponse, entryTwoResponse};
-        hasResponded = true;
-        setVisible(false);
-        dispose();
-    }
-
-    public void draw() {
-        JLabel entryOneLabel = new JLabel(entryOneName);
-        entryOneLabel.setPreferredSize(new Dimension(200, 33));
-        entryOneLabel.setBounds(5, 5, 200, 33);
-        add(entryOneLabel);
-        JTextField entryOneField = new JTextField();
-        entryOneField.setPreferredSize(new Dimension(200, 33));
-        entryOneField.setBounds(205, 5, 200, 33);
-        add(entryOneField);
-        JLabel entryTwoLabel = new JLabel(entryTwoName);
-        entryTwoLabel.setPreferredSize(new Dimension(200, 33));
-        entryTwoLabel.setBounds(5, 39, 200, 33);
-        add(entryTwoLabel);
-        JTextField entryTwoField = new JTextField();
-        entryTwoField.setPreferredSize(new Dimension(200, 33));
-        entryTwoField.setBounds(205, 39, 200, 33);
-        add(entryTwoField);
-
-        JButton confirmButton = new JButton("Confirm");
-        confirmButton.setPreferredSize(new Dimension(100, 33));
-        confirmButton.setBounds(10, 73, 390, 33);
-        confirmButton.addActionListener(e -> { entryOneResponse=entryOneField.getText();entryTwoResponse=entryTwoField.getText();close();onResponse.run(); });
-        add(confirmButton);
-        hasDrawnPopup = true;
-    }
-
-    public void tick() {
-        if (!hasDrawnPopup) {
-            draw();
+            Runtime.getRuntime().addShutdownHook(new Thread(this::close, "Shutdown-thread"));
         }
+
+        public void close() {
+            responses = new String[]{entryOneResponse, entryTwoResponse};
+            hasResponded = true;
+            setVisible(false);
+            dispose();
+        }
+
+        public void draw() {
+            JLabel entryOneLabel = new JLabel(entryOneName);
+            entryOneLabel.setPreferredSize(new Dimension(200, 33));
+            entryOneLabel.setBounds(5, 5, 200, 33);
+            add(entryOneLabel);
+            JTextField entryOneField = new JTextField();
+            entryOneField.setPreferredSize(new Dimension(200, 33));
+            entryOneField.setBounds(205, 5, 200, 33);
+            add(entryOneField);
+            JLabel entryTwoLabel = new JLabel(entryTwoName);
+            entryTwoLabel.setPreferredSize(new Dimension(200, 33));
+            entryTwoLabel.setBounds(5, 39, 200, 33);
+            add(entryTwoLabel);
+            JTextField entryTwoField = new JTextField();
+            entryTwoField.setPreferredSize(new Dimension(200, 33));
+            entryTwoField.setBounds(205, 39, 200, 33);
+            add(entryTwoField);
+
+            JButton confirmButton = new JButton("Confirm");
+            confirmButton.setPreferredSize(new Dimension(100, 33));
+            confirmButton.setBounds(10, 73, 390, 33);
+            confirmButton.addActionListener(e -> {
+                entryOneResponse = entryOneField.getText();
+                entryTwoResponse = entryTwoField.getText();
+                close();
+                onResponse.run();
+            });
+            add(confirmButton);
+            hasDrawnPopup = true;
+        }
+
+        public void tick() {
+            if (!hasDrawnPopup) {
+                draw();
+            }
+        }
+
     }
 }
