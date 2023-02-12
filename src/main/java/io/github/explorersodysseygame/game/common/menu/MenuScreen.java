@@ -1,8 +1,6 @@
 package io.github.explorersodysseygame.game.common.menu;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.client.ClientMenuScreen;
-import io.github.explorersodysseygame.game.client.ClientWindow;
 
 import javax.swing.*;
 import java.awt.*;

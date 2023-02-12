@@ -12,12 +12,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.Socket;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.regex.Pattern;
-
-import static java.lang.Thread.sleep;
 
 public class ClientWindow extends Window {
 

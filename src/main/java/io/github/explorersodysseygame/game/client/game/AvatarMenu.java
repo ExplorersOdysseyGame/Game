@@ -1,7 +1,6 @@
 package io.github.explorersodysseygame.game.client.game;
 
 import io.github.explorersodysseygame.game.Main;
-import io.github.explorersodysseygame.game.client.Client;
 import io.github.explorersodysseygame.game.common.entity.Player;
 import io.github.explorersodysseygame.game.common.ui.PickerBar.*;
 
