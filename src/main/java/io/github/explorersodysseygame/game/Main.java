@@ -12,8 +12,8 @@ public class Main {
     public static final String gameType = "vanilla"; // CHANGE TO SOMETHING ELSE IN MODDED VERSIONS
 
     public static final Logger logger = new Logger(gameID);
-    public static final String versionString = "0.0.1-prealpha-1"; // Semantic versioning. Uses a basic version (e.g. 1.2.3) then a status (prealpha, alpha, beta, rc) then a status version.
-    public static final int versionNumeric = 1; // The numeric version. Increment this every time versionString changes.
+    public static final String versionString = "0.1.0-prealpha-1"; // Semantic versioning. Uses a basic version (e.g. 1.2.3) then a status (prealpha, alpha, beta, rc) then a status version.
+    public static final int versionNumeric = 2; // The numeric version. Increment this every time versionString changes.
 
     public final SpritesheetReader spritesheetReader = new Spritesheet().new SpritesheetReader();
     public final ImageReader imageReader = new Image().new ImageReader();
